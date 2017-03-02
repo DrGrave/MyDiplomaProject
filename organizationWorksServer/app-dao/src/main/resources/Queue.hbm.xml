@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.sethomecompany.domain">
+
+    <class name="Queue" table="queue">
+        <id name="idInQueue" column="idqueue">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="work" column="idofwork" class="Work" not-null="true"/>
+        <many-to-one name="userInQueue" column="idStudent" class="User" not-null="true"/>
+        <many-to-one name="timeteable" column="IdTimeteable" class="Timeteable" not-null="true"/>
+    </class>
+
+
+</hibernate-mapping>
