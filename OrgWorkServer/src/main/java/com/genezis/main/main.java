@@ -35,9 +35,9 @@ class SpringHibernateMain {
         user.setUserType(person);
         group.setIdUserStarosta(user);
         group.setNumberOfGroup("345123");
-        userDAO.saveUser(user);
-       groupDAO.saveGroup(group);
-      //  personDAO.saveUserType(person);
+      //  userDAO.saveUser(user);
+      // groupDAO.saveGroup(group);
+        personDAO.saveUserType(person);
 
         System.out.println("Person::"+person);
 
