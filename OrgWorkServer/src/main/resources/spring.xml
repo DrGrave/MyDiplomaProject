@@ -21,9 +21,22 @@
         <property name="dataSource" ref="dataSource" />
         <property name="annotatedClasses">
             <list>
-                <value>com.genezis.model.UserType</value>
+                <value>com.genezis.model.Attorney</value>
+                <value>com.genezis.model.CommentToWork</value>
+                <value>com.genezis.model.CommentToStudent</value>
                 <value>com.genezis.model.Group</value>
+                <value>com.genezis.model.InClass</value>
+                <value>com.genezis.model.Marks</value>
+                <value>com.genezis.model.Queue</value>
+                <value>com.genezis.model.Subject</value>
+                <value>com.genezis.model.Timeteable</value>
+                <value>com.genezis.model.TypeInClass</value>
+                <value>com.genezis.model.TypeOfAttorney</value>
+                <value>com.genezis.model.TypeOfWork</value>
                 <value>com.genezis.model.User</value>
+                <value>com.genezis.model.UserCredentials</value>
+                <value>com.genezis.model.UserType</value>
+                <value>com.genezis.model.Work</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -31,10 +44,51 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <prop key="hibernate.current_session_context_class">thread</prop>
                 <prop key="hibernate.show_sql">false</prop>
+
             </props>
         </property>
     </bean>
+    <bean id="attorneyDAO" class="com.genezis.dao.AttorneyDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="commentToStudentDAO" class="com.genezis.dao.CommentToStudentDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="commentToWorkDAO" class="com.genezis.dao.CommentToWorkDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="inClassDAO" class="com.genezis.dao.InClassDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
 
+    <bean id="marksDAO" class="com.genezis.dao.MarksDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="queueDAO" class="com.genezis.dao.QueueDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="subjectDAO" class="com.genezis.dao.SubjectDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="timeteableDAO" class="com.genezis.dao.TimeteableDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+
+    <bean id="typeInClassDAO" class="com.genezis.dao.TypeInClassDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="typeOfAttorneyDAO" class="com.genezis.dao.TypeOfAttorneyDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="userCredentialDAO" class="com.genezis.dao.UserCredentialDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="workDAO" class="com.genezis.dao.WorkDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="typeOfWorkDAO" class="com.genezis.dao.TypeOfWorkDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
     <bean id="userDAO" class="com.genezis.dao.UserDAOImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
