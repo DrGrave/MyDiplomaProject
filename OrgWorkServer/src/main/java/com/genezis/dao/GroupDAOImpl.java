@@ -38,4 +38,9 @@ public class GroupDAOImpl implements GroupDAO{
     public SessionFactory getSessionFactory() {
         return sessionFactory;
     }
+
+    @Override
+    public Group editGroup(Group group) {
+        return null;
+    }
 }

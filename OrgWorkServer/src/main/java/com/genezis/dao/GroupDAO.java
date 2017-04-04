@@ -11,4 +11,5 @@ public interface GroupDAO {
     public void saveGroup(Group group);
     public List<Group> list();
     public Group getGroupById();
+    public  Group editGroup(Group group);
 }
