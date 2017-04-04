@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.Timeteable;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -21,7 +22,10 @@ public class TimeteableDAOImpl implements TimeteableDAO{
 
     @Override
     public void saveTimeteable(Timeteable timeteable) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.save(timeteable);
+        session.getTransaction().commit();
     }
 
     @Override
@@ -37,5 +41,10 @@ public class TimeteableDAOImpl implements TimeteableDAO{
     @Override
     public Timeteable editTimeteable(Timeteable timeteable) {
         return null;
+    }
+
+    @Override
+    public void deleteTimeteable(Timeteable timeteable) {
+
     }
 }

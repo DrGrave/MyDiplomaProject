@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.TypeInClass;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -21,7 +22,10 @@ public class TypeInClassDAOImpl implements TypeInClassDAO{
 
     @Override
     public void saveTypeInClass(TypeInClass typeInClass) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.save(typeInClass);
+        session.getTransaction().commit();
     }
 
     @Override
@@ -37,5 +41,10 @@ public class TypeInClassDAOImpl implements TypeInClassDAO{
     @Override
     public TypeInClass editTypeInClass(TypeInClass typeInClass) {
         return null;
+    }
+
+    @Override
+    public void deleteTypeInClass(TypeInClass typeInClass) {
+        
     }
 }

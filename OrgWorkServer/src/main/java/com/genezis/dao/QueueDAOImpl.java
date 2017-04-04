@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.Queue;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -21,7 +22,10 @@ public class QueueDAOImpl implements QueueDAO{
 
     @Override
     public void saveQueue(Queue queue) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.save(queue);
+        session.getTransaction().commit();
     }
 
     @Override
@@ -37,5 +41,10 @@ public class QueueDAOImpl implements QueueDAO{
     @Override
     public Queue editQueue(Queue queue) {
         return null;
+    }
+
+    @Override
+    public void deleteQuee(Queue queue) {
+
     }
 }

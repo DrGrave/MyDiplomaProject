@@ -12,4 +12,5 @@ public interface CommentToStudentDAO {
     public List<CommentToStudent> listCommentToStudent();
     public CommentToStudent getCommentToStudentById(int id);
     public CommentToStudent editCommentToStudent(CommentToStudent commentToStudent);
+    public void deleteCommentToStudent(CommentToStudent commentToStudent);
 }

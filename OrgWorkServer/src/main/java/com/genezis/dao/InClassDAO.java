@@ -12,4 +12,5 @@ public interface InClassDAO {
     public List<InClass> listInClass();
     public InClass getInClass(int id);
     public InClass editInClass(InClass inClass);
+    public void deleteInClass(InClass inClass);
 }

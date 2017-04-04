@@ -12,7 +12,7 @@ public class TypeOfWork {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTypeOfWOrk;
 
-    @Column(name = "NameTypeOfWork")
+    @Column(name = "NameOfTypeWork")
     private String nameTypeOfWOrk;
 
     public int getIdTypeOfWOrk() {

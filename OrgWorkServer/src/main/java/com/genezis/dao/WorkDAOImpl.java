@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.Work;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -21,7 +22,10 @@ public class WorkDAOImpl implements WorkDAO{
 
     @Override
     public void saveWork(Work work) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.save(work);
+        session.getTransaction().commit();
     }
 
     @Override
@@ -37,5 +41,10 @@ public class WorkDAOImpl implements WorkDAO{
     @Override
     public Work editWork(Work work) {
         return null;
+    }
+
+    @Override
+    public void deleteWork(Work work) {
+
     }
 }

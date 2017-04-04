@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.UserCredentials;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 /**
  * Created by vadim on 03.04.17.
  */
-public class UserCredentialDAOImpl implements UserCredentialDAO {
+public class UserCredentialsDAOImpl implements UserCredentialsDAO {
     private SessionFactory sessionFactory;
 
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -21,7 +22,10 @@ public class UserCredentialDAOImpl implements UserCredentialDAO {
 
     @Override
     public void saveUserCredential(UserCredentials userCredential) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.save(userCredential);
+        session.getTransaction().commit();
     }
 
     @Override
@@ -37,5 +41,10 @@ public class UserCredentialDAOImpl implements UserCredentialDAO {
     @Override
     public UserCredentials editUserCredential(UserCredentials userCredential) {
         return null;
+    }
+
+    @Override
+    public void deleteUserCredentials(UserCredentials userCredentials) {
+
     }
 }

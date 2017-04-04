@@ -12,4 +12,5 @@ public interface CommentToWorkDAO {
     public List<CommentToWork> listCommentToWork();
     public CommentToWork getCommentToWorkById(int id);
     public CommentToWork editCommentToWork(CommentToWork commentToWork);
+    public void deleteCommentToWork(CommentToWork commentToWork);
 }

@@ -12,4 +12,5 @@ public interface AttorneyDAO {
     public List<Attorney> listAttorney();
     public Attorney getAttorneyById(int id);
     public Attorney editAttorney(Attorney attorney);
+    public void deleteAttorney(Attorney attorney);
 }

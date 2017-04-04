@@ -12,4 +12,5 @@ public interface WorkDAO {
     public List<Work> listWork();
     public Work getWork(int id);
     public Work editWork(Work work);
+    void deleteWork(Work work);
 }

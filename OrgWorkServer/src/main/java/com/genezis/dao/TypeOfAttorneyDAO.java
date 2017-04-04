@@ -12,4 +12,5 @@ public interface TypeOfAttorneyDAO {
     public List<TypeOfAttorney> listTypeOfAttorney();
     public TypeOfAttorney getTypeOfAttorney(int id);
     public TypeOfAttorney editTypeOfAttorney(TypeOfAttorney typeOfAttorney);
+    void deleteTypeOfAttorney(TypeOfAttorney typeOfAttorney);
 }

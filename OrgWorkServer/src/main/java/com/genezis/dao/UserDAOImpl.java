@@ -37,4 +37,9 @@ public class UserDAOImpl implements UserDAO{
     public User getUserById(int id) {
         return null;
     }
+
+    @Override
+    public void deleteUser(User user) {
+
+    }
 }

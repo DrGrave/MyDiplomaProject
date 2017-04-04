@@ -11,4 +11,5 @@ public interface UserTypeDAO {
     public void saveUserType(UserType userType);
     public List<UserType> list();
     public UserType getUserTypeById(int id);
+    void deleteUserType(UserType userType);
 }

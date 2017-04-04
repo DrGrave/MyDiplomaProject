@@ -80,7 +80,7 @@
     <bean id="typeOfAttorneyDAO" class="com.genezis.dao.TypeOfAttorneyDAOImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
-    <bean id="userCredentialDAO" class="com.genezis.dao.UserCredentialDAOImpl">
+    <bean id="userCredentialsDAO" class="com.genezis.dao.UserCredentialsDAOImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
     <bean id="workDAO" class="com.genezis.dao.WorkDAOImpl">

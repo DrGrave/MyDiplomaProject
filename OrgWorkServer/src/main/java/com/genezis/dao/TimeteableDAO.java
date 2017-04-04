@@ -12,4 +12,5 @@ public interface TimeteableDAO {
     public List<Timeteable> listTimeteable();
     public Timeteable getTimeteable(int id);
     public Timeteable editTimeteable(Timeteable timeteable);
+    void deleteTimeteable(Timeteable timeteable);
 }

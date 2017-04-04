@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.TypeOfAttorney;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -21,7 +22,10 @@ public class TypeOfAttorneyDAOImpl implements TypeOfAttorneyDAO{
 
     @Override
     public void saveTypeOfAttorney(TypeOfAttorney typeOfAttorney) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.save(typeOfAttorney);
+        session.getTransaction().commit();
     }
 
     @Override
@@ -37,5 +41,10 @@ public class TypeOfAttorneyDAOImpl implements TypeOfAttorneyDAO{
     @Override
     public TypeOfAttorney editTypeOfAttorney(TypeOfAttorney typeOfAttorney) {
         return null;
+    }
+
+    @Override
+    public void deleteTypeOfAttorney(TypeOfAttorney typeOfAttorney) {
+        
     }
 }

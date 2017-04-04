@@ -12,4 +12,5 @@ public interface TypeOfWorkDAO {
     public List<TypeOfWork> listTypeOfWork();
     public TypeOfWork getTypeOfWork(int id);
     public TypeOfWork editTypeOfWork(TypeOfWork typeOfWork);
+    void deleteTypeOfWork(TypeOfWork typeOfWork);
 }

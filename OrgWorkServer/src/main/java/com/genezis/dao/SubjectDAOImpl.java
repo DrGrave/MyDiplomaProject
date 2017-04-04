@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.Subject;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -21,7 +22,10 @@ public class SubjectDAOImpl implements SubjectDAO{
 
     @Override
     public void saveSubject(Subject subject) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.save(subject);
+        session.getTransaction().commit();
     }
 
     @Override
@@ -37,5 +41,10 @@ public class SubjectDAOImpl implements SubjectDAO{
     @Override
     public Subject editSubject(Subject subject) {
         return null;
+    }
+
+    @Override
+    public void deleteSubject(Subject subject) {
+
     }
 }

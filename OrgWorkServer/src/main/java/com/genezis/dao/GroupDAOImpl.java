@@ -43,4 +43,9 @@ public class GroupDAOImpl implements GroupDAO{
     public Group editGroup(Group group) {
         return null;
     }
+
+    @Override
+    public void deleteGroup(Group group) {
+
+    }
 }

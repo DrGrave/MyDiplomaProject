@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.CommentToWork;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -21,7 +22,10 @@ public class CommentToWorkDAOImpl implements CommentToWorkDAO{
 
     @Override
     public void saveCommentToWork(CommentToWork commentToWork) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.save(commentToWork);
+        session.getTransaction().commit();
     }
 
     @Override
@@ -37,5 +41,10 @@ public class CommentToWorkDAOImpl implements CommentToWorkDAO{
     @Override
     public CommentToWork editCommentToWork(CommentToWork commentToWork) {
         return null;
+    }
+
+    @Override
+    public void deleteCommentToWork(CommentToWork commentToWork) {
+
     }
 }

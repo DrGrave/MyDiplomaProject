@@ -20,7 +20,13 @@ public class UserTypeDAOImpl implements UserTypeDAO{
 
     @Override
     public UserType getUserTypeById(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from UserType t where t.id=:id");
+        query.setParameter("id", id);
+        List<UserType> list = query.list();
+        session.getTransaction().commit();
+        return ifExists(list);
     }
 
     @Override
@@ -40,5 +46,21 @@ public class UserTypeDAOImpl implements UserTypeDAO{
         List<UserType> userTypes = query.list();
         session.getTransaction().commit();
         return userTypes;
+    }
+
+    @Override
+    public void deleteUserType(UserType userType) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.delete(userType);
+        session.getTransaction().commit();
+    }
+
+    private UserType ifExists(List<UserType> userList){
+        if(userList.size() > 0){
+            return userList.get(0);
+        }else {
+            return null;
+        }
     }
 }

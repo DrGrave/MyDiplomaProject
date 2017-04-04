@@ -12,4 +12,5 @@ public interface MarksDAO {
     public List<Marks> listMarks();
     public Marks getMarks(int id);
     public Marks editMarks(Marks marks);
+    public void deleteMarks(Marks marks);
 }

@@ -12,4 +12,5 @@ public interface TypeInClassDAO {
     public List<TypeInClass> listTypeInClass();
     public TypeInClass getTypeInClass(int id);
     public TypeInClass editTypeInClass(TypeInClass typeInClass);
+    void deleteTypeInClass(TypeInClass typeInClass);
 }

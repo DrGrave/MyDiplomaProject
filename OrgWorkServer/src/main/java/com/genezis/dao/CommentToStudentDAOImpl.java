@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.CommentToStudent;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -21,7 +22,10 @@ public class CommentToStudentDAOImpl implements CommentToStudentDAO{
 
     @Override
     public void saveCommentToStudent(CommentToStudent commentToStudent) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.save(commentToStudent);
+        session.getTransaction().commit();
     }
 
     @Override
@@ -37,5 +41,10 @@ public class CommentToStudentDAOImpl implements CommentToStudentDAO{
     @Override
     public CommentToStudent editCommentToStudent(CommentToStudent commentToStudent) {
         return null;
+    }
+
+    @Override
+    public void deleteCommentToStudent(CommentToStudent commentToStudent) {
+
     }
 }

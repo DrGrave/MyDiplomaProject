@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.Marks;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -21,7 +22,10 @@ public class MarksDAOImpl implements MarksDAO{
 
     @Override
     public void saveMarks(Marks marks) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.save(marks);
+        session.getTransaction().commit();
     }
 
     @Override
@@ -37,5 +41,10 @@ public class MarksDAOImpl implements MarksDAO{
     @Override
     public Marks editMarks(Marks marks) {
         return null;
+    }
+
+    @Override
+    public void deleteMarks(Marks marks) {
+
     }
 }

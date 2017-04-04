@@ -12,4 +12,5 @@ public interface QueueDAO {
     public List<Queue> listQueue();
     public Queue getQueue(int id);
     public Queue editQueue(Queue queue);
+    void deleteQuee(Queue queue);
 }
