@@ -8,9 +8,9 @@ import java.util.List;
  * Created by vadim on 03.04.17.
  */
 public interface MarksDAO {
-    public void saveMarks(Marks marks);
-    public List<Marks> listMarks();
-    public Marks getMarks(int id);
-    public Marks editMarks(Marks marks);
-    public void deleteMarks(Marks marks);
+    void saveMarks(Marks marks);
+    List<Marks> listMarks();
+    Marks getMarks(int id);
+    Marks editMarks(Marks marks);
+     void deleteMarks(Marks marks);
 }

@@ -8,9 +8,9 @@ import java.util.List;
  * Created by vadim on 03.04.17.
  */
 public interface CommentToStudentDAO {
-    public void saveCommentToStudent(CommentToStudent commentToStudent);
-    public List<CommentToStudent> listCommentToStudent();
-    public CommentToStudent getCommentToStudentById(int id);
-    public CommentToStudent editCommentToStudent(CommentToStudent commentToStudent);
-    public void deleteCommentToStudent(CommentToStudent commentToStudent);
+    void saveCommentToStudent(CommentToStudent commentToStudent);
+    List<CommentToStudent> listCommentToStudent();
+    CommentToStudent getCommentToStudentById(int id);
+    CommentToStudent editCommentToStudent(CommentToStudent commentToStudent);
+    void deleteCommentToStudent(CommentToStudent commentToStudent);
 }

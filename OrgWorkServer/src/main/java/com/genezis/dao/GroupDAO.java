@@ -8,9 +8,9 @@ import java.util.List;
  * Created by vadim on 03.04.17.
  */
 public interface GroupDAO {
-    public void saveGroup(Group group);
-    public List<Group> list();
-    public Group getGroupById();
-    public  Group editGroup(Group group);
-    public void deleteGroup(Group group);
+    void saveGroup(Group group);
+    List<Group> list();
+    Group getGroupById();
+    Group editGroup(Group group);
+    void deleteGroup(Group group);
 }

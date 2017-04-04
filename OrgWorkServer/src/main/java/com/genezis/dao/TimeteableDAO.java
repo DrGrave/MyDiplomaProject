@@ -8,9 +8,9 @@ import java.util.List;
  * Created by vadim on 03.04.17.
  */
 public interface TimeteableDAO {
-    public void saveTimeteable(Timeteable timeteable);
-    public List<Timeteable> listTimeteable();
-    public Timeteable getTimeteable(int id);
-    public Timeteable editTimeteable(Timeteable timeteable);
+    void saveTimeteable(Timeteable timeteable);
+    List<Timeteable> listTimeteable();
+    Timeteable getTimeteable(int id);
+    Timeteable editTimeteable(Timeteable timeteable);
     void deleteTimeteable(Timeteable timeteable);
 }

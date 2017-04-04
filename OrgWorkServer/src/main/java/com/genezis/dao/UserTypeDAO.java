@@ -8,8 +8,8 @@ import java.util.List;
  * Created by vadim on 03.04.17.
  */
 public interface UserTypeDAO {
-    public void saveUserType(UserType userType);
-    public List<UserType> list();
-    public UserType getUserTypeById(int id);
+    void saveUserType(UserType userType);
+    List<UserType> list();
+    UserType getUserTypeById(int id);
     void deleteUserType(UserType userType);
 }
