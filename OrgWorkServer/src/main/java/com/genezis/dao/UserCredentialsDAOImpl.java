@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.UserCredentials;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -35,7 +36,13 @@ public class UserCredentialsDAOImpl implements UserCredentialsDAO {
 
     @Override
     public UserCredentials getUserCredential(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from UserCredentials uc where uc.id=:id");
+        query.setParameter("id", id);
+        List<UserCredentials> list = query.list();
+        session.getTransaction().commit();
+        return ifExists(list);
     }
 
     @Override
@@ -46,5 +53,13 @@ public class UserCredentialsDAOImpl implements UserCredentialsDAO {
     @Override
     public void deleteUserCredentials(UserCredentials userCredentials) {
 
+    }
+
+    private UserCredentials ifExists(List<UserCredentials> userCredentialsList){
+        if(userCredentialsList.size() > 0){
+            return userCredentialsList.get(0);
+        }else {
+            return null;
+        }
     }
 }

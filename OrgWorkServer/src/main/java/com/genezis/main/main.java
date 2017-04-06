@@ -62,7 +62,6 @@ class SpringHibernateMain {
 
 
 
-        groupDAO.saveGroup(group);
         typeOfAttorneyDAO.saveTypeOfAttorney(typeOfAttorney);
         typeInClassDAO.saveTypeInClass(typeInClass);
         personDAO.saveUserType(person);
@@ -72,11 +71,17 @@ class SpringHibernateMain {
         List<UserType> list = personDAO.list();
         typeOfWorkDAO.saveTypeOfWork(typeOfWork);
         userDAO.saveUser(user);
+        groupDAO.saveGroup(group);
+        person = personDAO.getUserTypeById(1);
+        user = userDAO.getUserById(1);
+
 
         for(UserType p : list){
             System.out.println("Person List::"+p);
         }
+        System.out.print(person.getNameUserType());
         //close resources
+        //System.out.print(user.getUserName());
         context.close();
     }
 }

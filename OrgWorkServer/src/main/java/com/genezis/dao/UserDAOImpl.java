@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.User;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -30,16 +31,48 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public List<User> list() {
-        return null;
+        List<User> list;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from myUser");
+        list = query.list();
+        session.getTransaction().commit();
+        return list;
     }
 
     @Override
     public User getUserById(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from myUser u where u.id=:id");
+        query.setParameter("id", id);
+        List<User> list = query.list();
+        session.getTransaction().commit();
+        return ifExists(list);
     }
 
     @Override
     public void deleteUser(User user) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.delete(user);
+        session.getTransaction().commit();
+    }
 
+    @Override
+    public User editUser(User user) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.refresh(user);
+        session.getTransaction().commit();
+        return user;
+    }
+
+    private User ifExists(List<User> userList){
+        if(userList.size() > 0){
+            return userList.get(0);
+        }else {
+            return null;
+        }
     }
 }
