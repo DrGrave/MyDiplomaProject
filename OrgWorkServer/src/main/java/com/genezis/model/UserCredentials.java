@@ -20,7 +20,7 @@ public class UserCredentials {
 
     @OneToOne
     @JoinColumn(name = "IdUser")
-    private User user;
+    private myUser myUser;
 
     public int getIdUserCredential() {
         return idUserCredential;
@@ -46,12 +46,12 @@ public class UserCredentials {
         this.userPassword = userPassword;
     }
 
-    public User getUser() {
-        return user;
+    public myUser getMyUser() {
+        return myUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setMyUser(myUser myUser) {
+        this.myUser = myUser;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class UserCredentials {
                 "idUserCredential=" + idUserCredential +
                 ", userLogin='" + userLogin + '\'' +
                 ", userPassword='" + userPassword + '\'' +
-                ", user=" + user +
+                ", myUser=" + myUser +
                 '}';
     }
 }

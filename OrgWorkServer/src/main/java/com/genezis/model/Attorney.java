@@ -10,23 +10,28 @@ import javax.persistence.*;
 public class Attorney {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private
     int idAttorney;
 
     @ManyToOne
         @JoinColumn(name = "IdTypeOfAttorney")
+    private
     TypeOfAttorney typeOfAttorney;
 
     @ManyToOne
         @JoinColumn(name = "IdSubject")
+    private
     Subject subject;
 
     @ManyToOne
         @JoinColumn(name = "IdUserProfessor")
-    User idUserProfessor;
+    private
+    myUser idMyUserProfessor;
 
     @ManyToOne
         @JoinColumn(name = "IdUserStudent")
-    User idUserStudent;
+    private
+    myUser idMyUserStudent;
 
     public int getIdAttorney() {
         return idAttorney;
@@ -52,19 +57,19 @@ public class Attorney {
         this.subject = subject;
     }
 
-    public User getIdUserProfessor() {
-        return idUserProfessor;
+    public myUser getIdMyUserProfessor() {
+        return idMyUserProfessor;
     }
 
-    public void setIdUserProfessor(User idUserProfessor) {
-        this.idUserProfessor = idUserProfessor;
+    public void setIdMyUserProfessor(myUser idMyUserProfessor) {
+        this.idMyUserProfessor = idMyUserProfessor;
     }
 
-    public User getIdUserStudent() {
-        return idUserStudent;
+    public myUser getIdMyUserStudent() {
+        return idMyUserStudent;
     }
 
-    public void setIdUserStudent(User idUserStudent) {
-        this.idUserStudent = idUserStudent;
+    public void setIdMyUserStudent(myUser idMyUserStudent) {
+        this.idMyUserStudent = idMyUserStudent;
     }
 }

@@ -16,9 +16,11 @@ public class UserType {
     @Id
     @Column(name="IdUserType")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private
     int idUserType;
 
     @Column(name = "NameUserType")
+    private
     String nameUserType;
 
     public int getIdUserType() {

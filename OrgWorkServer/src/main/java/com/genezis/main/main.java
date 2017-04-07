@@ -45,16 +45,16 @@ class SpringHibernateMain {
 
         Group group = new Group();
         group.setIdGroup(1);
-        User user = new User();
-        user.setIdUser(2);
-        user.setUserName("ff");
-        user.setUserSeccondname("ff");
-        user.setUserSurname("ff");
+        myUser myUser = new myUser();
+        myUser.setIdUser(2);
+        myUser.setUserName("ff");
+        myUser.setUserSeccondname("ff");
+        myUser.setUserSurname("ff");
         UserType person = new UserType();
         person.setNameUserType("Professor1");
         person.setIdUserType(1);
-        user.setUserType(person);
-        group.setIdUserStarosta(user);
+        myUser.setUserType(person);
+        group.setIdMyUserStarosta(myUser);
         group.setNumberOfGroup("345123");
         Subject subject = new Subject();
         subject.setIdSubject(0);
@@ -70,10 +70,10 @@ class SpringHibernateMain {
        // personDAO.deleteUserType(person);
         List<UserType> list = personDAO.list();
         typeOfWorkDAO.saveTypeOfWork(typeOfWork);
-        userDAO.saveUser(user);
+        userDAO.saveUser(myUser);
         groupDAO.saveGroup(group);
         person = personDAO.getUserTypeById(1);
-        user = userDAO.getUserById(1);
+        myUser = userDAO.getUserById(1);
 
 
         for(UserType p : list){
@@ -81,7 +81,7 @@ class SpringHibernateMain {
         }
         System.out.print(person.getNameUserType());
         //close resources
-        //System.out.print(user.getUserName());
+        //System.out.print(myUser.getUserName());
         context.close();
     }
 }

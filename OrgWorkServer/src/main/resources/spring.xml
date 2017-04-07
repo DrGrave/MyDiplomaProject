@@ -11,7 +11,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/OrganizationWorksDB" />
         <property name="username" value="root" />
-        <property name="password" value="1" />
+        <property name="password" value="" />
     </bean>
 
 
@@ -33,7 +33,7 @@
                 <value>com.genezis.model.TypeInClass</value>
                 <value>com.genezis.model.TypeOfAttorney</value>
                 <value>com.genezis.model.TypeOfWork</value>
-                <value>com.genezis.model.User</value>
+                <value>com.genezis.model.myUser</value>
                 <value>com.genezis.model.UserCredentials</value>
                 <value>com.genezis.model.UserType</value>
                 <value>com.genezis.model.Work</value>

@@ -20,7 +20,7 @@ public class Group {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdUserStarosta", nullable = false)
-    private User idUserStarosta;
+    private myUser idMyUserStarosta;
 
     public int getIdGroup() {
         return idGroup;
@@ -38,12 +38,12 @@ public class Group {
         this.numberOfGroup = numberOfGroup;
     }
 
-    public User getIdUserStarosta() {
-        return idUserStarosta;
+    public myUser getIdMyUserStarosta() {
+        return idMyUserStarosta;
     }
 
-    public void setIdUserStarosta(User idUserStarosta) {
-        this.idUserStarosta = idUserStarosta;
+    public void setIdMyUserStarosta(myUser idMyUserStarosta) {
+        this.idMyUserStarosta = idMyUserStarosta;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Group {
         return "Group{" +
                 "idGroup=" + idGroup +
                 ", numberOfGroup='" + numberOfGroup + '\'' +
-                ", idUserStarosta=" + idUserStarosta +
+                ", idMyUserStarosta=" + idMyUserStarosta +
                 '}';
     }
 }

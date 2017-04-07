@@ -13,10 +13,12 @@ import javax.persistence.Table;
 public class M2MGroupTimeteable {
     @ManyToOne
         @JoinColumn(name = "IdGroup")
+    private
     Group idOfGroupM2M;
 
     @ManyToOne
         @JoinColumn(name = "IdTimeteable")
+    private
     Timeteable idTimeteableM2M;
 
     public Group getIdOfGroupM2M() {

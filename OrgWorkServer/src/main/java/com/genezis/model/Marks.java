@@ -21,7 +21,7 @@ public class Marks {
 
     @OneToOne
     @JoinColumn(name = "IdUser")
-    private User user;
+    private myUser myUser;
 
     @OneToOne
     @JoinColumn(name = "IdOfWork")
@@ -51,12 +51,12 @@ public class Marks {
         this.timeteable = timeteable;
     }
 
-    public User getUser() {
-        return user;
+    public myUser getMyUser() {
+        return myUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setMyUser(myUser myUser) {
+        this.myUser = myUser;
     }
 
     public Work getWork() {
@@ -73,7 +73,7 @@ public class Marks {
                 "idMarks=" + idMarks +
                 ", mark=" + mark +
                 ", timeteable=" + timeteable +
-                ", user=" + user +
+                ", myUser=" + myUser +
                 ", work=" + work +
                 '}';
     }

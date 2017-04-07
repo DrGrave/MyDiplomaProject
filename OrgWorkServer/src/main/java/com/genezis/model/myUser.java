@@ -5,10 +5,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="myUser")
-public class User {
+public class myUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int IdUser;
+    private int idUser;
 
 
     @Column(name = "UserName", nullable = false)
@@ -37,15 +37,15 @@ public class User {
         this.userType = userType;
     }
 
-    public User() {
+    public myUser() {
     }
 
     public int getIdUser() {
-        return IdUser;
+        return idUser;
     }
 
     public void setIdUser(int idUser) {
-        IdUser = idUser;
+        this.idUser = idUser;
     }
 
     public String getUserName() {

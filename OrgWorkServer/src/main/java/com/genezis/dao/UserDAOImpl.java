@@ -1,6 +1,6 @@
 package com.genezis.dao;
 
-import com.genezis.model.User;
+import com.genezis.model.myUser;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,55 +22,55 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public void saveUser(User user) {
+    public void saveUser(myUser myUser) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        session.save(user);
+        session.save(myUser);
         session.getTransaction().commit();
     }
 
     @Override
-    public List<User> list() {
-        List<User> list;
+    public List<myUser> list() {
+        List<myUser> list;
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        Query query = session.createQuery("from myUser");
+        Query query = session.createQuery("from myuser");
         list = query.list();
         session.getTransaction().commit();
         return list;
     }
 
     @Override
-    public User getUserById(int id) {
+    public myUser getUserById(int id) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        Query query = session.createQuery("from myUser u where u.id=:id");
+        Query query = session.createQuery("from myUser t where t.id=:id");
         query.setParameter("id", id);
-        List<User> list = query.list();
+        List<myUser> list = query.list();
         session.getTransaction().commit();
         return ifExists(list);
     }
 
     @Override
-    public void deleteUser(User user) {
+    public void deleteUser(myUser myUser) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        session.delete(user);
+        session.delete(myUser);
         session.getTransaction().commit();
     }
 
     @Override
-    public User editUser(User user) {
+    public myUser editUser(myUser myUser) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        session.refresh(user);
+        session.refresh(myUser);
         session.getTransaction().commit();
-        return user;
+        return myUser;
     }
 
-    private User ifExists(List<User> userList){
-        if(userList.size() > 0){
-            return userList.get(0);
+    private myUser ifExists(List<myUser> myUserList){
+        if(myUserList.size() > 0){
+            return myUserList.get(0);
         }else {
             return null;
         }

@@ -13,18 +13,20 @@ import javax.persistence.Table;
 public class M2MProfessorSubject {
     @ManyToOne
     @JoinColumn(name = "IdUser")
-    User idUserM2M;
+    private
+    myUser idMyUserM2M;
 
     @ManyToOne
     @JoinColumn(name = "IdSubject")
+    private
     Subject idSubjectM2M;
 
-    public User getIdUserM2M() {
-        return idUserM2M;
+    public myUser getIdMyUserM2M() {
+        return idMyUserM2M;
     }
 
-    public void setIdUserM2M(User idUserM2M) {
-        this.idUserM2M = idUserM2M;
+    public void setIdMyUserM2M(myUser idMyUserM2M) {
+        this.idMyUserM2M = idMyUserM2M;
     }
 
     public Subject getIdSubjectM2M() {
