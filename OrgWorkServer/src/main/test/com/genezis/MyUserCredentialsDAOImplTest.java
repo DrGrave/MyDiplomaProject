@@ -54,6 +54,6 @@ public class MyUserCredentialsDAOImplTest {
     @Test
     public void delete()throws NoSuchAlgorithmException{
         MyUserCredentials myUserCredentials = userCredentialsDAO.getUserCredential(1);
-        userCredentialsDAO.deleteUserCredentials(myUserCredentials);
+    //    userCredentialsDAO.deleteUserCredentials(myUserCredentials);
     }
 }

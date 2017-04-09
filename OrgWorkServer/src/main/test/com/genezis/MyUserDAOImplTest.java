@@ -56,6 +56,6 @@ public class MyUserDAOImplTest {
     @Test
     public void delete()throws NoSuchAlgorithmException{
         MyUser myUser = userDAO.getUserById(1);
-        userDAO.deleteUser(myUser);
+     //   userDAO.deleteUser(myUser);
     }
 }

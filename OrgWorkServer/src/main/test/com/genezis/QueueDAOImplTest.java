@@ -54,6 +54,6 @@ public class QueueDAOImplTest {
     @Test
     public void delete()throws NoSuchAlgorithmException{
         Queue queue = queueDAO.getQueue(1);
-        queueDAO.deleteQuee(queue);
+   //     queueDAO.deleteQuee(queue);
     }
 }

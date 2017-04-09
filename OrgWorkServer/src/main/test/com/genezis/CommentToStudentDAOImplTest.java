@@ -36,7 +36,7 @@ public class CommentToStudentDAOImplTest {
     public void add()throws NoSuchAlgorithmException{
         CommentToStudent commentToStudent = new CommentToStudent();
         commentToStudent.setProfessor(userDAO.getUserById(1));
-        commentToStudent.setStudent(userDAO.getUserById(3));
+        commentToStudent.setStudent(userDAO.getUserById(2));
         commentToStudent.setTextOfComment("FFF");
         commentToStudentDAO.saveCommentToStudent(commentToStudent);
     }
@@ -45,7 +45,7 @@ public class CommentToStudentDAOImplTest {
     public void edit()throws NoSuchAlgorithmException{
         CommentToStudent commentToStudent;
         commentToStudent = commentToStudentDAO.getCommentToStudentById(1);
-        commentToStudent.setProfessor(userDAO.getUserById(4));
+        commentToStudent.setProfessor(userDAO.getUserById(3));
         commentToStudent.setTextOfComment("Aass");
         commentToStudentDAO.editCommentToStudent(commentToStudent);
     }
@@ -59,6 +59,6 @@ public class CommentToStudentDAOImplTest {
     public void delete()throws NoSuchAlgorithmException{
         CommentToStudent commentToStudent;
         commentToStudent = commentToStudentDAO.getCommentToStudentById(1);
-        commentToStudentDAO.deleteCommentToStudent(commentToStudent);
+     //   commentToStudentDAO.deleteCommentToStudent(commentToStudent);
     }
 }

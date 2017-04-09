@@ -55,6 +55,6 @@ public class InClassDAOImplTest {
     @Test
     public void delete()throws NoSuchAlgorithmException{
         InClass inClass = inClassDAO.getInClass(1);
-        inClassDAO.deleteInClass(inClass);
+     //   inClassDAO.deleteInClass(inClass);
     }
 }

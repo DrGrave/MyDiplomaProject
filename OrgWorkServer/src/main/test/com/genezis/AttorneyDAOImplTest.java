@@ -62,7 +62,7 @@ public class AttorneyDAOImplTest {
     public void deleteAttorney() throws NoSuchAlgorithmException{
         Attorney attorney = new Attorney();
         attorney = attorneyDAO.getAttorneyById(1);
-        attorneyDAO.deleteAttorney(attorney);
+    //    attorneyDAO.deleteAttorney(attorney);
     }
 
 }

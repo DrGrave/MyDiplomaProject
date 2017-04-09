@@ -46,12 +46,4 @@ public class StudentGroup {
         this.idMyUserStarosta = idMyUserStarosta;
     }
 
-    @Override
-    public String toString() {
-        return "StudentGroup{" +
-                "idGroup=" + idGroup +
-                ", numberOfGroup='" + numberOfGroup + '\'' +
-                ", idMyUserStarosta=" + idMyUserStarosta +
-                '}';
-    }
 }

@@ -1,6 +1,7 @@
 package com.genezis.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Vadim on 04.04.2017.
@@ -8,27 +9,31 @@ import javax.persistence.*;
 @Entity
 @Table(name = "m2m_student_work")
 public class M2MStudentWork {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int idM2MStudentWork;
+
     @ManyToOne
             @JoinColumn(name = "IdOfWork")
-    private Work studentWork;
+    private Work idOfWork;
 
     @ManyToOne
             @JoinColumn(name = "IdUser")
-    private MyUser studentToWork;
+    private MyUser idUser;
 
-    public Work getStudentWork() {
-        return studentWork;
+    public Work getIdOfWork() {
+        return idOfWork;
     }
 
-    public void setStudentWork(Work studentWork) {
-        this.studentWork = studentWork;
+    public void setIdOfWork(Work idOfWork) {
+        this.idOfWork = idOfWork;
     }
 
-    public MyUser getStudentToWork() {
-        return studentToWork;
+    public MyUser getIdUser() {
+        return idUser;
     }
 
-    public void setStudentToWork(MyUser studentToWork) {
-        this.studentToWork = studentToWork;
+    public void setIdUser(MyUser idUser) {
+        this.idUser = idUser;
     }
 }

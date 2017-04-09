@@ -1,9 +1,7 @@
 package com.genezis.model;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Vadim on 04.04.2017.
@@ -11,29 +9,42 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "m2m_group_timeteable")
 public class M2MGroupTimeteable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int idM2MGroupTimeteable;
+
     @ManyToOne
         @JoinColumn(name = "IdGroup")
     private
-    StudentGroup idOfStudentGroupM2M;
+    StudentGroup idGroup;
 
     @ManyToOne
         @JoinColumn(name = "IdTimeteable")
     private
-    Timeteable idTimeteableM2M;
+    Timeteable idTimeteable;
 
-    public StudentGroup getIdOfStudentGroupM2M() {
-        return idOfStudentGroupM2M;
+    public int getIdM2MGroupTimeteable() {
+        return idM2MGroupTimeteable;
     }
 
-    public void setIdOfStudentGroupM2M(StudentGroup idOfStudentGroupM2M) {
-        this.idOfStudentGroupM2M = idOfStudentGroupM2M;
+    public void setIdM2MGroupTimeteable(int idM2MGroupTimeteable) {
+        this.idM2MGroupTimeteable = idM2MGroupTimeteable;
     }
 
-    public Timeteable getIdTimeteableM2M() {
-        return idTimeteableM2M;
+    public StudentGroup getIdGroup() {
+        return idGroup;
     }
 
-    public void setIdTimeteableM2M(Timeteable idTimeteableM2M) {
-        this.idTimeteableM2M = idTimeteableM2M;
+    public void setIdGroup(StudentGroup idGroup) {
+        this.idGroup = idGroup;
+    }
+
+    public Timeteable getIdTimeteable() {
+        return idTimeteable;
+    }
+
+    public void setIdTimeteable(Timeteable idTimeteable) {
+        this.idTimeteable = idTimeteable;
     }
 }

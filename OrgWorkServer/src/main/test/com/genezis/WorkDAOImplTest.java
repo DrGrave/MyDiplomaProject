@@ -58,6 +58,6 @@ public class WorkDAOImplTest {
     @Test
     public void delete()throws NoSuchAlgorithmException{
         Work work = workDAO.getWork(1);
-        workDAO.deleteWork(work);
+      //  workDAO.deleteWork(work);
     }
 }

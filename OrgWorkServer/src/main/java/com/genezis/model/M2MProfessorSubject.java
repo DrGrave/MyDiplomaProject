@@ -1,9 +1,9 @@
 package com.genezis.model;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import com.sun.javafx.beans.IDProperty;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Vadim on 04.04.2017.
@@ -11,29 +11,41 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "m2m_professor_subject")
 public class M2MProfessorSubject {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int idM2MProfessorSubject;
+
     @ManyToOne
     @JoinColumn(name = "IdUser")
     private
-    MyUser idMyUserM2M;
+    MyUser idUser;
 
     @ManyToOne
     @JoinColumn(name = "IdSubject")
     private
-    Subject idSubjectM2M;
+    Subject idSubject;
 
-    public MyUser getIdMyUserM2M() {
-        return idMyUserM2M;
+    public int getIdM2MProfessorSubject() {
+        return idM2MProfessorSubject;
     }
 
-    public void setIdMyUserM2M(MyUser idMyUserM2M) {
-        this.idMyUserM2M = idMyUserM2M;
+    public void setIdM2MProfessorSubject(int idM2MProfessorSubject) {
+        this.idM2MProfessorSubject = idM2MProfessorSubject;
     }
 
-    public Subject getIdSubjectM2M() {
-        return idSubjectM2M;
+    public MyUser getIdUser() {
+        return idUser;
     }
 
-    public void setIdSubjectM2M(Subject idSubjectM2M) {
-        this.idSubjectM2M = idSubjectM2M;
+    public void setIdUser(MyUser idUser) {
+        this.idUser = idUser;
+    }
+
+    public Subject getIdSubject() {
+        return idSubject;
+    }
+
+    public void setIdSubject(Subject idSubject) {
+        this.idSubject = idSubject;
     }
 }

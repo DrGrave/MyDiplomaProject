@@ -54,6 +54,6 @@ public class TypeOfWorkDAOImplTest {
     @Test
     public void delete()throws NoSuchAlgorithmException{
         TypeOfWork typeOfWork = typeOfWorkDAO.getTypeOfWork(1);
-        typeOfWorkDAO.deleteTypeOfWork(typeOfWork);
+    //    typeOfWorkDAO.deleteTypeOfWork(typeOfWork);
     }
 }

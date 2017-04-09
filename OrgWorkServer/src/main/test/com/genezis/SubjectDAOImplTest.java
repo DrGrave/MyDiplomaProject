@@ -52,6 +52,6 @@ public class SubjectDAOImplTest {
     @Test
     public void delete()throws NoSuchAlgorithmException{
         Subject subject = subjectDAO.getSubject(1);
-        subjectDAO.deleteSubject(subject);
+    //    subjectDAO.deleteSubject(subject);
     }
 }

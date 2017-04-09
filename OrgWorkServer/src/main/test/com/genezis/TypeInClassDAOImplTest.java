@@ -52,6 +52,6 @@ public class TypeInClassDAOImplTest {
     @Test
     public void delete()throws NoSuchAlgorithmException{
         TypeInClass typeInClass = typeInClassDAO.getTypeInClass(1);
-        typeInClassDAO.deleteTypeInClass(typeInClass);
+    //    typeInClassDAO.deleteTypeInClass(typeInClass);
     }
 }

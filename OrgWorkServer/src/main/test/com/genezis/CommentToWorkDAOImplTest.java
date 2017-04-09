@@ -36,7 +36,7 @@ public class CommentToWorkDAOImplTest {
     public void add()throws NoSuchAlgorithmException {
         CommentToWork commentToWork = new CommentToWork();
         commentToWork.setProfessor(userDAO.getUserById(1));
-        commentToWork.setStudent(userDAO.getUserById(3));
+        commentToWork.setStudent(userDAO.getUserById(2));
         commentToWork.setTextOfCommentWork("BadWork");
         commentToWork.setWork(workDAO.getWork(1));
         commentToWorkDAO.saveCommentToWork(commentToWork);
@@ -56,6 +56,6 @@ public class CommentToWorkDAOImplTest {
     @Test
     public void delete()throws NoSuchAlgorithmException{
         CommentToWork commentToWork = commentToWorkDAO.getCommentToWorkById(1);
-        commentToWorkDAO.deleteCommentToWork(commentToWork);
+    //    commentToWorkDAO.deleteCommentToWork(commentToWork);
     }
 }

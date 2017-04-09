@@ -1,7 +1,8 @@
 package com.genezis;
 
 import com.genezis.dao.*;
-import com.genezis.model.UserType;
+import com.genezis.model.InClass;
+import com.genezis.model.M2MGroupTimeteable;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +14,7 @@ import java.util.List;
  * Created by Vadim on 09.04.2017.
  */
 @Transactional()
-public class UserTypeDAOImplTest {
+public class M2MGroupTimeteableDAOImplTest {
     ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
     UserTypeDAO personDAO = context.getBean(UserTypeDAO.class);
     GroupDAO groupDAO = context.getBean(GroupDAO.class);
@@ -31,27 +32,28 @@ public class UserTypeDAOImplTest {
     TypeOfWorkDAO typeOfWorkDAO = context.getBean(TypeOfWorkDAO.class);
     UserCredentialsDAO userCredentialsDAO = context.getBean(UserCredentialsDAO.class);
     WorkDAO workDAO = context.getBean(WorkDAO.class);
+    M2MGroupTimeteableDAO m2mGroupTimeteableDAO = context.getBean(M2MGroupTimeteableDAO.class);
+
     @Test
     public void add()throws NoSuchAlgorithmException {
-        UserType userType = new UserType();
-        userType.setNameUserType("NoName");
-        personDAO.saveUserType(userType);
+        M2MGroupTimeteable m2MGroupTimeteable = new M2MGroupTimeteable();
+        m2MGroupTimeteable.setIdGroup(groupDAO.getGroupById(1));
+        m2MGroupTimeteable.setIdTimeteable(timeteableDAO.getTimeteable(1));
+        m2mGroupTimeteableDAO.saveM2MGroupTimeteable(m2MGroupTimeteable);
     }
 
     @Test
     public void edit()throws NoSuchAlgorithmException{
-        UserType userType = personDAO.getUserTypeById(1);
-        userType.setNameUserType("NewUserType");
-        personDAO.editUserType(userType);
+        M2MGroupTimeteable m2MGroupTimeteable = m2mGroupTimeteableDAO.getM2MGroupTimeteable(1);
+        m2MGroupTimeteable.setIdGroup(groupDAO.getGroupById(2));
+        m2mGroupTimeteableDAO.editM2MGroupTimeteable(m2MGroupTimeteable);
     }
     @Test
     public void list()throws NoSuchAlgorithmException{
-        List<UserType> userTypes = personDAO.list();
-        System.out.print(userTypes);
+
     }
     @Test
     public void delete()throws NoSuchAlgorithmException{
-        UserType userType = personDAO.getUserTypeById(1);
-       // personDAO.deleteUserType(userType);
+
     }
 }

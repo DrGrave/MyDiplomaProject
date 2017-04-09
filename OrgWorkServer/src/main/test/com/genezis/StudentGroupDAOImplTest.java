@@ -53,6 +53,6 @@ public class StudentGroupDAOImplTest {
     @Test
     public void delete()throws NoSuchAlgorithmException{
         StudentGroup studentGroup = groupDAO.getGroupById(1);
-        groupDAO.deleteGroup(studentGroup);
+     //   groupDAO.deleteGroup(studentGroup);
     }
 }

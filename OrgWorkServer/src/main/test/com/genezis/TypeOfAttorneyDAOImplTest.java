@@ -51,6 +51,6 @@ public class TypeOfAttorneyDAOImplTest {
     @Test
     public void delete()throws NoSuchAlgorithmException{
         TypeOfAttorney typeOfAttorney = typeOfAttorneyDAO.getTypeOfAttorney(1);
-        typeOfAttorneyDAO.deleteTypeOfAttorney(typeOfAttorney);
+   //     typeOfAttorneyDAO.deleteTypeOfAttorney(typeOfAttorney);
     }
 }

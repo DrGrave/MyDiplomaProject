@@ -62,6 +62,6 @@ public class TimeteableDAOImplTest {
     @Test
     public void delete()throws NoSuchAlgorithmException{
         Timeteable timeteable = timeteableDAO.getTimeteable(1);
-        timeteableDAO.deleteTimeteable(timeteable);
+     //   timeteableDAO.deleteTimeteable(timeteable);
     }
 }

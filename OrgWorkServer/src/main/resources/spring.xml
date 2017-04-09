@@ -37,6 +37,9 @@
                 <value>com.genezis.model.MyUserCredentials</value>
                 <value>com.genezis.model.UserType</value>
                 <value>com.genezis.model.Work</value>
+                <value>com.genezis.model.M2MProfessorSubject</value>
+                <value>com.genezis.model.M2MGroupTimeteable</value>
+                <value>com.genezis.model.M2MStudentWork</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -48,6 +51,18 @@
             </props>
         </property>
     </bean>
+    <bean id="m2mGroupTimeteableDAO" class="com.genezis.dao.M2MGroupTimeteableDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+
+    <bean id="m2mProfessorSubjectDAO" class="com.genezis.dao.M2MProfessorSubjectDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+
+    <bean id="m2mStudentWorkDAO" class="com.genezis.dao.M2MStudentWorkDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+
     <bean id="attorneyDAO" class="com.genezis.dao.AttorneyDAOImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
@@ -96,8 +111,8 @@
     <bean id="groupDAO" class="com.genezis.dao.GroupDAOImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
-
     <bean id="personDAO" class="com.genezis.dao.UserTypeDAOImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
+
 </beans>

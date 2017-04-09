@@ -1,19 +1,19 @@
 package com.genezis;
 
 import com.genezis.dao.*;
-import com.genezis.model.UserType;
+import com.genezis.model.M2MGroupTimeteable;
+import com.genezis.model.M2MStudentWork;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 
 /**
  * Created by Vadim on 09.04.2017.
  */
 @Transactional()
-public class UserTypeDAOImplTest {
+public class M2MStudentWorkDAOImplTest {
     ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
     UserTypeDAO personDAO = context.getBean(UserTypeDAO.class);
     GroupDAO groupDAO = context.getBean(GroupDAO.class);
@@ -31,27 +31,29 @@ public class UserTypeDAOImplTest {
     TypeOfWorkDAO typeOfWorkDAO = context.getBean(TypeOfWorkDAO.class);
     UserCredentialsDAO userCredentialsDAO = context.getBean(UserCredentialsDAO.class);
     WorkDAO workDAO = context.getBean(WorkDAO.class);
+    M2MGroupTimeteableDAO m2mGroupTimeteableDAO = context.getBean(M2MGroupTimeteableDAO.class);
+    M2MStudentWorkDAO m2mStudentWorkDAO = context.getBean(M2MStudentWorkDAO.class);
+
     @Test
     public void add()throws NoSuchAlgorithmException {
-        UserType userType = new UserType();
-        userType.setNameUserType("NoName");
-        personDAO.saveUserType(userType);
+        M2MStudentWork m2MStudentWork = new M2MStudentWork();
+        m2MStudentWork.setIdOfWork(workDAO.getWork(1));
+        m2MStudentWork.setIdUser(userDAO.getUserById(1));
+        m2mStudentWorkDAO.saveM2MStudentWork(m2MStudentWork);
     }
 
     @Test
     public void edit()throws NoSuchAlgorithmException{
-        UserType userType = personDAO.getUserTypeById(1);
-        userType.setNameUserType("NewUserType");
-        personDAO.editUserType(userType);
+        M2MStudentWork m2MStudentWork = m2mStudentWorkDAO.getM2MStudentWork(1);
+        m2MStudentWork.setIdOfWork(workDAO.getWork(3));
+        m2mStudentWorkDAO.editM2MStudentWork(m2MStudentWork);
     }
     @Test
     public void list()throws NoSuchAlgorithmException{
-        List<UserType> userTypes = personDAO.list();
-        System.out.print(userTypes);
+
     }
     @Test
     public void delete()throws NoSuchAlgorithmException{
-        UserType userType = personDAO.getUserTypeById(1);
-       // personDAO.deleteUserType(userType);
+
     }
 }
