@@ -17,11 +17,11 @@ public class CommentToWork {
 
     @OneToOne
     @JoinColumn(name = "IdUserProfessor")
-    private myUser professor;
+    private MyUser professor;
 
     @OneToOne
     @JoinColumn(name = "IdUserStudent")
-    private myUser student;
+    private MyUser student;
 
     @OneToOne
     @JoinColumn(name = "IdOfWork")
@@ -43,19 +43,19 @@ public class CommentToWork {
         this.textOfCommentWork = textOfCommentWork;
     }
 
-    public myUser getProfessor() {
+    public MyUser getProfessor() {
         return professor;
     }
 
-    public void setProfessor(myUser professor) {
+    public void setProfessor(MyUser professor) {
         this.professor = professor;
     }
 
-    public myUser getStudent() {
+    public MyUser getStudent() {
         return student;
     }
 
-    public void setStudent(myUser student) {
+    public void setStudent(MyUser student) {
         this.student = student;
     }
 

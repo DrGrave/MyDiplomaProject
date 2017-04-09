@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Created by vadim on 03.04.17.
  */
 @Entity
-@Table(name = "UserCredential")
-public class UserCredentials {
+@Table(name = "MyUserCredentials")
+public class MyUserCredentials {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUserCredential;
@@ -20,7 +20,7 @@ public class UserCredentials {
 
     @OneToOne
     @JoinColumn(name = "IdUser")
-    private myUser myUser;
+    private MyUser MyUser;
 
     public int getIdUserCredential() {
         return idUserCredential;
@@ -46,21 +46,21 @@ public class UserCredentials {
         this.userPassword = userPassword;
     }
 
-    public myUser getMyUser() {
-        return myUser;
+    public MyUser getMyUser() {
+        return MyUser;
     }
 
-    public void setMyUser(myUser myUser) {
-        this.myUser = myUser;
+    public void setMyUser(MyUser MyUser) {
+        this.MyUser = MyUser;
     }
 
     @Override
     public String toString() {
-        return "UserCredentials{" +
+        return "MyUserCredentials{" +
                 "idUserCredential=" + idUserCredential +
                 ", userLogin='" + userLogin + '\'' +
                 ", userPassword='" + userPassword + '\'' +
-                ", myUser=" + myUser +
+                ", MyUser=" + MyUser +
                 '}';
     }
 }

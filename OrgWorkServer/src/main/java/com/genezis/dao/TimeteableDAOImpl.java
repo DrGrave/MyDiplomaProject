@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.Timeteable;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -30,21 +31,47 @@ public class TimeteableDAOImpl implements TimeteableDAO{
 
     @Override
     public List<Timeteable> listTimeteable() {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from  Timeteable");
+        List<Timeteable> list = query.list();
+        session.getTransaction().commit();
+        return list;
     }
 
     @Override
     public Timeteable getTimeteable(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from Timeteable t where t.id=:id");
+        query.setParameter("id",id);
+        List<Timeteable> list = query.list();
+        session.getTransaction().commit();
+        return ifExists(list);
     }
 
     @Override
     public Timeteable editTimeteable(Timeteable timeteable) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.update(timeteable);
+        session.getTransaction().commit();
+        return timeteable;
     }
 
     @Override
     public void deleteTimeteable(Timeteable timeteable) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.delete(timeteable);
+        session.getTransaction().commit();
+    }
 
+    private Timeteable ifExists(List<Timeteable> timeteables){
+        if(timeteables.size() > 0){
+            return timeteables.get(0);
+        }else {
+            return null;
+        }
     }
 }

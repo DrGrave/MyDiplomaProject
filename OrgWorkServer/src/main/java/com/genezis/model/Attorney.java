@@ -26,12 +26,12 @@ public class Attorney {
     @ManyToOne
         @JoinColumn(name = "IdUserProfessor")
     private
-    myUser idMyUserProfessor;
+    MyUser idMyUserProfessor;
 
     @ManyToOne
         @JoinColumn(name = "IdUserStudent")
     private
-    myUser idMyUserStudent;
+    MyUser idMyUserStudent;
 
     public int getIdAttorney() {
         return idAttorney;
@@ -57,19 +57,19 @@ public class Attorney {
         this.subject = subject;
     }
 
-    public myUser getIdMyUserProfessor() {
+    public MyUser getIdMyUserProfessor() {
         return idMyUserProfessor;
     }
 
-    public void setIdMyUserProfessor(myUser idMyUserProfessor) {
+    public void setIdMyUserProfessor(MyUser idMyUserProfessor) {
         this.idMyUserProfessor = idMyUserProfessor;
     }
 
-    public myUser getIdMyUserStudent() {
+    public MyUser getIdMyUserStudent() {
         return idMyUserStudent;
     }
 
-    public void setIdMyUserStudent(myUser idMyUserStudent) {
+    public void setIdMyUserStudent(MyUser idMyUserStudent) {
         this.idMyUserStudent = idMyUserStudent;
     }
 }

@@ -25,7 +25,7 @@ public class Timeteable {
 
     @OneToOne
     @JoinColumn(name = "IdUser")
-    private myUser myUser;
+    private MyUser MyUser;
 
     @OneToOne
     @JoinColumn(name = "IdSubject")
@@ -63,12 +63,12 @@ public class Timeteable {
         this.timeToEnd = timeToEnd;
     }
 
-    public myUser getMyUser() {
-        return myUser;
+    public MyUser getMyUser() {
+        return MyUser;
     }
 
-    public void setMyUser(myUser myUser) {
-        this.myUser = myUser;
+    public void setMyUser(MyUser MyUser) {
+        this.MyUser = MyUser;
     }
 
     public Subject getSubject() {
@@ -86,7 +86,7 @@ public class Timeteable {
                 ", date=" + date +
                 ", time=" + time +
                 ", timeToEnd=" + timeToEnd +
-                ", myUser=" + myUser +
+                ", MyUser=" + MyUser +
                 ", subject=" + subject +
                 '}';
     }

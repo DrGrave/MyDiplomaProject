@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.TypeOfWork;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -30,21 +31,47 @@ public class TypeOfWorkDAOImpl implements TypeOfWorkDAO{
 
     @Override
     public List<TypeOfWork> listTypeOfWork() {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from TypeOfWork");
+        List<TypeOfWork> list = query.list();
+        session.getTransaction().commit();
+        return list;
     }
 
     @Override
     public TypeOfWork getTypeOfWork(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from TypeOfWork tof where tof.id=:id");
+        query.setParameter("id", id);
+        List<TypeOfWork> list = query.list();
+        session.getTransaction().commit();
+        return ifExists(list);
     }
 
     @Override
     public TypeOfWork editTypeOfWork(TypeOfWork typeOfWork) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.update(typeOfWork);
+        session.getTransaction().commit();
+        return typeOfWork;
     }
 
     @Override
     public void deleteTypeOfWork(TypeOfWork typeOfWork) {
+        Session session = sessionFactory.getCurrentSession();
+        session.getTransaction();
+        session.delete(typeOfWork);
+        session.getTransaction().commit();
+    }
 
+    private TypeOfWork ifExists(List<TypeOfWork> typeOfWorks){
+        if(typeOfWorks.size() > 0){
+            return typeOfWorks.get(0);
+        }else {
+            return null;
+        }
     }
 }

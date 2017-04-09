@@ -14,19 +14,19 @@ public class M2MGroupTimeteable {
     @ManyToOne
         @JoinColumn(name = "IdGroup")
     private
-    Group idOfGroupM2M;
+    StudentGroup idOfStudentGroupM2M;
 
     @ManyToOne
         @JoinColumn(name = "IdTimeteable")
     private
     Timeteable idTimeteableM2M;
 
-    public Group getIdOfGroupM2M() {
-        return idOfGroupM2M;
+    public StudentGroup getIdOfStudentGroupM2M() {
+        return idOfStudentGroupM2M;
     }
 
-    public void setIdOfGroupM2M(Group idOfGroupM2M) {
-        this.idOfGroupM2M = idOfGroupM2M;
+    public void setIdOfStudentGroupM2M(StudentGroup idOfStudentGroupM2M) {
+        this.idOfStudentGroupM2M = idOfStudentGroupM2M;
     }
 
     public Timeteable getIdTimeteableM2M() {

@@ -4,8 +4,8 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name="myUser")
-public class myUser {
+@Table(name="MyUser")
+public class MyUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUser;
@@ -23,7 +23,7 @@ public class myUser {
 
     @ManyToOne
     @JoinColumn(name = "IdGroup")
-    private Group group;
+    private StudentGroup studentGroup;
 
     @ManyToOne
     @JoinColumn(name = "IdUserType")
@@ -37,7 +37,7 @@ public class myUser {
         this.userType = userType;
     }
 
-    public myUser() {
+    public MyUser() {
     }
 
     public int getIdUser() {
@@ -72,11 +72,11 @@ public class myUser {
         this.userSeccondname = userSeccondname;
     }
 
-    public Group getGroup() {
-        return group;
+    public StudentGroup getStudentGroup() {
+        return studentGroup;
     }
 
-    public void setGroup(Group group) {
-        this.group = group;
+    public void setStudentGroup(StudentGroup studentGroup) {
+        this.studentGroup = studentGroup;
     }
 }

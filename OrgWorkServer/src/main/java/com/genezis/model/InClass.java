@@ -18,7 +18,7 @@ public class InClass {
 
     @OneToOne
     @JoinColumn(name = "IdUser")
-    private myUser myUser;
+    private MyUser MyUser;
 
     @OneToOne
     @JoinColumn(name = "IdTypeInClass")
@@ -40,12 +40,12 @@ public class InClass {
         this.timeteable = timeteable;
     }
 
-    public myUser getMyUser() {
-        return myUser;
+    public MyUser getMyUser() {
+        return MyUser;
     }
 
-    public void setMyUser(myUser myUser) {
-        this.myUser = myUser;
+    public void setMyUser(MyUser MyUser) {
+        this.MyUser = MyUser;
     }
 
     public TypeInClass getTypeInClass() {
@@ -61,7 +61,7 @@ public class InClass {
         return "InClass{" +
                 "idInClass=" + idInClass +
                 ", timeteable=" + timeteable +
-                ", myUser=" + myUser +
+                ", MyUser=" + MyUser +
                 ", typeInClass=" + typeInClass +
                 '}';
     }

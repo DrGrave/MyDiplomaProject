@@ -14,18 +14,18 @@ public class M2MProfessorSubject {
     @ManyToOne
     @JoinColumn(name = "IdUser")
     private
-    myUser idMyUserM2M;
+    MyUser idMyUserM2M;
 
     @ManyToOne
     @JoinColumn(name = "IdSubject")
     private
     Subject idSubjectM2M;
 
-    public myUser getIdMyUserM2M() {
+    public MyUser getIdMyUserM2M() {
         return idMyUserM2M;
     }
 
-    public void setIdMyUserM2M(myUser idMyUserM2M) {
+    public void setIdMyUserM2M(MyUser idMyUserM2M) {
         this.idMyUserM2M = idMyUserM2M;
     }
 

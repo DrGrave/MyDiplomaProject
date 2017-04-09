@@ -55,7 +55,7 @@ public class WorkDAOImpl implements WorkDAO{
     public Work editWork(Work work) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        session.refresh(work);
+        session.update(work);
         session.getTransaction().commit();
         return work;
     }

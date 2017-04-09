@@ -24,7 +24,7 @@
                 <value>com.genezis.model.Attorney</value>
                 <value>com.genezis.model.CommentToWork</value>
                 <value>com.genezis.model.CommentToStudent</value>
-                <value>com.genezis.model.Group</value>
+                <value>com.genezis.model.StudentGroup</value>
                 <value>com.genezis.model.InClass</value>
                 <value>com.genezis.model.Marks</value>
                 <value>com.genezis.model.Queue</value>
@@ -33,8 +33,8 @@
                 <value>com.genezis.model.TypeInClass</value>
                 <value>com.genezis.model.TypeOfAttorney</value>
                 <value>com.genezis.model.TypeOfWork</value>
-                <value>com.genezis.model.myUser</value>
-                <value>com.genezis.model.UserCredentials</value>
+                <value>com.genezis.model.MyUser</value>
+                <value>com.genezis.model.MyUserCredentials</value>
                 <value>com.genezis.model.UserType</value>
                 <value>com.genezis.model.Work</value>
             </list>

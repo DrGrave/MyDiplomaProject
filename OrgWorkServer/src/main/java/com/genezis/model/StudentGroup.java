@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="StudentGroup")
-public class Group {
+public class StudentGroup {
     @Id
     @Column(name="IdGroup")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Group {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdUserStarosta", nullable = false)
-    private myUser idMyUserStarosta;
+    private MyUser idMyUserStarosta;
 
     public int getIdGroup() {
         return idGroup;
@@ -38,17 +38,17 @@ public class Group {
         this.numberOfGroup = numberOfGroup;
     }
 
-    public myUser getIdMyUserStarosta() {
+    public MyUser getIdMyUserStarosta() {
         return idMyUserStarosta;
     }
 
-    public void setIdMyUserStarosta(myUser idMyUserStarosta) {
+    public void setIdMyUserStarosta(MyUser idMyUserStarosta) {
         this.idMyUserStarosta = idMyUserStarosta;
     }
 
     @Override
     public String toString() {
-        return "Group{" +
+        return "StudentGroup{" +
                 "idGroup=" + idGroup +
                 ", numberOfGroup='" + numberOfGroup + '\'' +
                 ", idMyUserStarosta=" + idMyUserStarosta +

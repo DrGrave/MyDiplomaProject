@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.Marks;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -30,21 +31,46 @@ public class MarksDAOImpl implements MarksDAO{
 
     @Override
     public List<Marks> listMarks() {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from Marks");
+        List<Marks> marks = query.list();
+        session.getTransaction().commit();
+        return marks;
     }
 
     @Override
     public Marks getMarks(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from Marks m where m.id=:id");
+        List<Marks> marks = query.list();
+        session.getTransaction().commit();
+        return ifExists(marks);
     }
 
     @Override
     public Marks editMarks(Marks marks) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.update(marks);
+        session.getTransaction().commit();
+        return marks;
     }
 
     @Override
     public void deleteMarks(Marks marks) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.delete(marks);
+        session.getTransaction().commit();
+    }
 
+    private Marks ifExists(List<Marks> marks){
+        if(marks.size() > 0){
+            return marks.get(0);
+        }else {
+            return null;
+        }
     }
 }

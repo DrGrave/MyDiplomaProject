@@ -32,7 +32,7 @@ public class Work {
 
     @ManyToOne
     @JoinColumn(name = "IdUser")
-    private myUser myUser;
+    private MyUser MyUser;
 
     public int getIdOfWork() {
         return idOfWork;
@@ -82,12 +82,12 @@ public class Work {
         this.subject = subject;
     }
 
-    public myUser getMyUser() {
-        return myUser;
+    public MyUser getMyUser() {
+        return MyUser;
     }
 
-    public void setMyUser(myUser myUser) {
-        this.myUser = myUser;
+    public void setMyUser(MyUser MyUser) {
+        this.MyUser = MyUser;
     }
 
     @Override
@@ -99,7 +99,7 @@ public class Work {
                 ", textOfWork='" + textOfWork + '\'' +
                 ", typeOfWork=" + typeOfWork +
                 ", subject=" + subject +
-                ", myUser=" + myUser +
+                ", MyUser=" + MyUser +
                 '}';
     }
 }

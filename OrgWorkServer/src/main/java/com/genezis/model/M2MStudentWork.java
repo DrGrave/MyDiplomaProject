@@ -14,7 +14,7 @@ public class M2MStudentWork {
 
     @ManyToOne
             @JoinColumn(name = "IdUser")
-    private myUser studentToWork;
+    private MyUser studentToWork;
 
     public Work getStudentWork() {
         return studentWork;
@@ -24,11 +24,11 @@ public class M2MStudentWork {
         this.studentWork = studentWork;
     }
 
-    public myUser getStudentToWork() {
+    public MyUser getStudentToWork() {
         return studentToWork;
     }
 
-    public void setStudentToWork(myUser studentToWork) {
+    public void setStudentToWork(MyUser studentToWork) {
         this.studentToWork = studentToWork;
     }
 }

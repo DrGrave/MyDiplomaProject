@@ -1,5 +1,6 @@
 package com.genezis.main;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import com.genezis.dao.*;
@@ -10,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 class SpringHibernateMain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
 
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 
@@ -43,19 +44,19 @@ class SpringHibernateMain {
         typeOfWork.setIdTypeOfWOrk(0);
         typeOfWork.setNameTypeOfWOrk("ga");
 
-        Group group = new Group();
-        group.setIdGroup(1);
-        myUser myUser = new myUser();
-        myUser.setIdUser(2);
-        myUser.setUserName("ff");
-        myUser.setUserSeccondname("ff");
-        myUser.setUserSurname("ff");
+        StudentGroup studentGroup = new StudentGroup();
+        studentGroup.setIdGroup(1);
+        MyUser MyUser = new MyUser();
+        MyUser.setIdUser(2);
+        MyUser.setUserName("ff");
+        MyUser.setUserSeccondname("ff");
+        MyUser.setUserSurname("ff");
         UserType person = new UserType();
         person.setNameUserType("Professor1");
         person.setIdUserType(1);
-        myUser.setUserType(person);
-        group.setIdMyUserStarosta(myUser);
-        group.setNumberOfGroup("345123");
+        MyUser.setUserType(person);
+        studentGroup.setIdMyUserStarosta(MyUser);
+        studentGroup.setNumberOfGroup("345123");
         Subject subject = new Subject();
         subject.setIdSubject(0);
         subject.setNameSubject("23");
@@ -70,18 +71,24 @@ class SpringHibernateMain {
        // personDAO.deleteUserType(person);
         List<UserType> list = personDAO.list();
         typeOfWorkDAO.saveTypeOfWork(typeOfWork);
-        userDAO.saveUser(myUser);
-        groupDAO.saveGroup(group);
+        userDAO.saveUser(MyUser);
+        groupDAO.saveGroup(studentGroup);
         person = personDAO.getUserTypeById(1);
-        myUser = userDAO.getUserById(1);
-
-
+        MyUser = userDAO.getUserById(1);
+        MyUserCredentials myUserCredentials = new MyUserCredentials();
+        myUserCredentials.setUserPassword("pass1");
+        myUserCredentials.setUserLogin("Log2");
+        myUserCredentials.setMyUser(MyUser);
+        userCredentialsDAO.saveUserCredential(myUserCredentials);
+        MyUserCredentials myUserCredentials1 = new MyUserCredentials();
+        myUserCredentials1 = userCredentialsDAO.getUserCredentialsByLP("Log2","pass1");
+        System.out.print(myUserCredentials1.getUserLogin());
         for(UserType p : list){
             System.out.println("Person List::"+p);
         }
         System.out.print(person.getNameUserType());
         //close resources
-        //System.out.print(myUser.getUserName());
+        //System.out.print(MyUser.getUserName());
         context.close();
     }
 }

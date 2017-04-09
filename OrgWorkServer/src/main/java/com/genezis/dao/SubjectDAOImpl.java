@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.Subject;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -30,21 +31,47 @@ public class SubjectDAOImpl implements SubjectDAO{
 
     @Override
     public List<Subject> listSubject() {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from Subject");
+        List<Subject> list = query.list();
+        session.getTransaction().commit();
+        return list;
     }
 
     @Override
     public Subject getSubject(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from Subject s where s.id=:id");
+        query.setParameter("id",id);
+        List<Subject> list = query.list();
+        session.getTransaction().commit();
+        return ifExists(list);
     }
 
     @Override
     public Subject editSubject(Subject subject) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.update(subject);
+        session.getTransaction().commit();
+        return subject;
     }
 
     @Override
     public void deleteSubject(Subject subject) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.delete(subject);
+        session.getTransaction().commit();
+    }
 
+    private Subject ifExists(List<Subject> subjects){
+        if(subjects.size() > 0){
+            return subjects.get(0);
+        }else {
+            return null;
+        }
     }
 }

@@ -4,9 +4,7 @@ import com.genezis.model.CommentToStudent;
 
 import java.util.List;
 
-/**
- * Created by vadim on 03.04.17.
- */
+
 public interface CommentToStudentDAO {
     void saveCommentToStudent(CommentToStudent commentToStudent);
     List<CommentToStudent> listCommentToStudent();

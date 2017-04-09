@@ -1,14 +1,13 @@
 package com.genezis.dao;
 
 import com.genezis.model.CommentToWork;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-/**
- * Created by vadim on 03.04.17.
- */
+
 public class CommentToWorkDAOImpl implements CommentToWorkDAO{
     private SessionFactory sessionFactory;
 
@@ -30,21 +29,47 @@ public class CommentToWorkDAOImpl implements CommentToWorkDAO{
 
     @Override
     public List<CommentToWork> listCommentToWork() {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from CommentToWork");
+        List<CommentToWork>  commentToWorks = query.list();
+        session.getTransaction().commit();
+        return commentToWorks;
     }
 
     @Override
     public CommentToWork getCommentToWorkById(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from CommentToWork ctw where ctw.id=:id");
+        query.setParameter("id",id);
+        List<CommentToWork> commentToWorks = query.list();
+        session.getTransaction().commit();
+        return ifExists(commentToWorks);
     }
 
     @Override
     public CommentToWork editCommentToWork(CommentToWork commentToWork) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.update(commentToWork);
+        session.getTransaction().commit();
+        return commentToWork;
     }
 
     @Override
     public void deleteCommentToWork(CommentToWork commentToWork) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.delete(commentToWork);
+        session.getTransaction().commit();
+    }
 
+    private CommentToWork ifExists(List<CommentToWork> commentToWorks){
+        if(commentToWorks.size() > 0){
+            return commentToWorks.get(0);
+        }else {
+            return null;
+        }
     }
 }

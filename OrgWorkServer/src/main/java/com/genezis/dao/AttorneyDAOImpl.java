@@ -1,14 +1,12 @@
 package com.genezis.dao;
 
 import com.genezis.model.Attorney;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-/**
- * Created by vadim on 03.04.17.
- */
 public class AttorneyDAOImpl implements AttorneyDAO{
     private SessionFactory sessionFactory;
 
@@ -30,21 +28,47 @@ public class AttorneyDAOImpl implements AttorneyDAO{
 
     @Override
     public List<Attorney> listAttorney() {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from Attorney");
+        List<Attorney> attorneys = query.list();
+        session.getTransaction().commit();
+        return attorneys;
     }
 
     @Override
     public Attorney getAttorneyById(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from Attorney a where a.id=:id");
+        query.setParameter("id",id);
+        List<Attorney> attorneys = query.list();
+        session.getTransaction().commit();
+        return ifExists(attorneys);
     }
 
     @Override
     public Attorney editAttorney(Attorney attorney) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.update(attorney);
+        session.getTransaction().commit();
+        return attorney;
     }
 
     @Override
     public void deleteAttorney(Attorney attorney) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.delete(attorney);
+        session.getTransaction().commit();
+    }
 
+    private Attorney ifExists(List<Attorney> attorneys){
+        if(attorneys.size() > 0){
+            return attorneys.get(0);
+        }else {
+            return null;
+        }
     }
 }

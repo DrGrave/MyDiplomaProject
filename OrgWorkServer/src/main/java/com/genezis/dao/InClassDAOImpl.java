@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.InClass;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -30,21 +31,46 @@ public class InClassDAOImpl implements InClassDAO{
 
     @Override
     public List<InClass> listInClass() {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from InClass");
+        List<InClass> inClasses = query.list();
+        session.getTransaction().commit();
+        return inClasses;
     }
 
     @Override
     public InClass getInClass(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from InClass ic where ic.id=:id");
+        query.setParameter("id",id);
+        List<InClass> inClasses = query.list();
+        session.getTransaction().commit();
+        return ifExists(inClasses);
     }
 
     @Override
     public InClass editInClass(InClass inClass) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.update(inClass);
+        session.getTransaction().commit();
+        return inClass;
     }
 
     @Override
     public void deleteInClass(InClass inClass) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.delete(inClass);
+        session.getTransaction().commit();
+    }
+    private InClass ifExists(List<InClass> inClasses){
+        if(inClasses.size() > 0){
+            return inClasses.get(0);
+        }else {
+            return null;
+        }
     }
 }

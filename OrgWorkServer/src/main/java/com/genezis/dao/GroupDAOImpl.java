@@ -1,35 +1,16 @@
 package com.genezis.dao;
 
-import com.genezis.model.Group;
+import com.genezis.model.StudentGroup;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-/**
- * Created by vadim on 03.04.17.
- */
+
 public class GroupDAOImpl implements GroupDAO{
 
     private SessionFactory sessionFactory;
-
-    @Override
-    public void saveGroup(Group group) {
-        Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        session.save(group);
-        session.getTransaction().commit();
-    }
-
-    @Override
-    public List<Group> list() {
-        return null;
-    }
-
-    @Override
-    public Group getGroupById() {
-        return null;
-    }
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -40,12 +21,56 @@ public class GroupDAOImpl implements GroupDAO{
     }
 
     @Override
-    public Group editGroup(Group group) {
-        return null;
+    public void saveGroup(StudentGroup studentGroup) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.save(studentGroup);
+        session.getTransaction().commit();
     }
 
     @Override
-    public void deleteGroup(Group group) {
+    public List<StudentGroup> list() {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from StudentGroup");
+        List<StudentGroup> studentGroups = query.list();
+        session.getTransaction().commit();
+        return studentGroups;
+    }
 
+    @Override
+    public StudentGroup getGroupById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from StudentGroup sg where  sg.id=:id");
+        query.setParameter("id",id);
+        List<StudentGroup> studentGroups = query.list();
+        session.getTransaction().commit();
+        return ifExists(studentGroups);
+    }
+
+    @Override
+    public StudentGroup editGroup(StudentGroup studentGroup) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.update(studentGroup);
+        session.getTransaction().commit();
+        return studentGroup;
+    }
+
+    @Override
+    public void deleteGroup(StudentGroup studentGroup) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.delete(studentGroup);
+        session.getTransaction().commit();
+    }
+
+    private StudentGroup ifExists(List<StudentGroup> studentGroups){
+        if(studentGroups.size() > 0){
+            return studentGroups.get(0);
+        }else {
+            return null;
+        }
     }
 }

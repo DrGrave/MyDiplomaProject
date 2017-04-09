@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.TypeInClass;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -30,21 +31,47 @@ public class TypeInClassDAOImpl implements TypeInClassDAO{
 
     @Override
     public List<TypeInClass> listTypeInClass() {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from TypeInClass");
+        List<TypeInClass> list = query.list();
+        session.getTransaction().commit();
+        return list;
     }
 
     @Override
     public TypeInClass getTypeInClass(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from TypeInClass tin where tin.id=:id");
+        query.setParameter("id",id);
+        List<TypeInClass> list = query.list();
+        session.getTransaction().commit();
+        return ifExists(list);
     }
 
     @Override
     public TypeInClass editTypeInClass(TypeInClass typeInClass) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.update(typeInClass);
+        session.getTransaction().commit();
+        return typeInClass;
     }
 
     @Override
     public void deleteTypeInClass(TypeInClass typeInClass) {
-        
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.delete(typeInClass);
+        session.getTransaction().commit();
+    }
+
+    private TypeInClass ifExists(List<TypeInClass> typeInClasses){
+        if(typeInClasses.size() > 0){
+            return typeInClasses.get(0);
+        }else {
+            return null;
+        }
     }
 }

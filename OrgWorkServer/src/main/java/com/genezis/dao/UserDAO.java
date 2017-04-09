@@ -1,6 +1,6 @@
 package com.genezis.dao;
 
-import com.genezis.model.myUser;
+import com.genezis.model.MyUser;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import java.util.List;
  * Created by vadim on 03.04.17.
  */
 public interface UserDAO {
-    void saveUser(myUser myUser);
-    List<myUser> list();
-    myUser getUserById(int id);
-    void deleteUser(myUser myUser);
-    myUser editUser(myUser myUser);
+    void saveUser(MyUser MyUser);
+    List<MyUser> list();
+    MyUser getUserById(int id);
+    void deleteUser(MyUser MyUser);
+    MyUser editUser(MyUser MyUser);
 }
