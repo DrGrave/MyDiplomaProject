@@ -56,6 +56,15 @@ public class UserTypeDAOImpl implements UserTypeDAO{
         session.getTransaction().commit();
     }
 
+    @Override
+    public UserType editUserType(UserType userType) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.update(userType);
+        session.getTransaction().commit();
+        return userType;
+    }
+
     private UserType ifExists(List<UserType> userList){
         if(userList.size() > 0){
             return userList.get(0);

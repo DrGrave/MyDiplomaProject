@@ -1,6 +1,6 @@
 package com.genezis;
 
-import com.genezis.dao.TypeOfWorkDAO;
+import com.genezis.dao.*;
 
 import com.genezis.model.TypeOfWork;
 import org.junit.Test;
@@ -8,6 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 /**
  * Created by Vadim on 09.04.2017.
@@ -15,11 +16,44 @@ import java.security.NoSuchAlgorithmException;
 @Transactional()
 public class TypeOfWorkDAOImplTest {
     ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+    UserTypeDAO personDAO = context.getBean(UserTypeDAO.class);
+    GroupDAO groupDAO = context.getBean(GroupDAO.class);
+    UserDAO userDAO = context.getBean(UserDAO.class);
+    AttorneyDAO attorneyDAO = context.getBean(AttorneyDAO.class);
+    CommentToWorkDAO commentToWorkDAO = context.getBean(CommentToWorkDAO.class);
+    CommentToStudentDAO commentToStudentDAO = context.getBean(CommentToStudentDAO.class);
+    InClassDAO inClassDAO = context.getBean(InClassDAO.class);
+    MarksDAO marksDAO = context.getBean(MarksDAO.class);
+    QueueDAO queueDAO = context.getBean(QueueDAO.class);
+    SubjectDAO subjectDAO = context.getBean(SubjectDAO.class);
+    TimeteableDAO timeteableDAO = context.getBean(TimeteableDAO.class);
+    TypeInClassDAO typeInClassDAO = context.getBean(TypeInClassDAO.class);
+    TypeOfAttorneyDAO typeOfAttorneyDAO = context.getBean(TypeOfAttorneyDAO.class);
     TypeOfWorkDAO typeOfWorkDAO = context.getBean(TypeOfWorkDAO.class);
+    UserCredentialsDAO userCredentialsDAO = context.getBean(UserCredentialsDAO.class);
+    WorkDAO workDAO = context.getBean(WorkDAO.class);
+
     @Test
-    public void addTypeOfWork() throws NoSuchAlgorithmException {
+    public void add()throws NoSuchAlgorithmException {
         TypeOfWork typeOfWork = new TypeOfWork();
-        typeOfWork.setNameTypeOfWOrk("Prev");
+        typeOfWork.setNameTypeOfWOrk("ThisTest");
         typeOfWorkDAO.saveTypeOfWork(typeOfWork);
+    }
+
+    @Test
+    public void edit()throws NoSuchAlgorithmException{
+        TypeOfWork typeOfWork = typeOfWorkDAO.getTypeOfWork(1);
+        typeOfWork.setNameTypeOfWOrk("NewTestWork");
+        typeOfWorkDAO.editTypeOfWork(typeOfWork);
+    }
+    @Test
+    public void list()throws NoSuchAlgorithmException{
+        List<TypeOfWork> list = typeOfWorkDAO.listTypeOfWork();
+        System.out.print(list);
+    }
+    @Test
+    public void delete()throws NoSuchAlgorithmException{
+        TypeOfWork typeOfWork = typeOfWorkDAO.getTypeOfWork(1);
+        typeOfWorkDAO.deleteTypeOfWork(typeOfWork);
     }
 }

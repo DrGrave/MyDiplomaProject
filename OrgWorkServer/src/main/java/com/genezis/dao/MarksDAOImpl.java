@@ -44,6 +44,7 @@ public class MarksDAOImpl implements MarksDAO{
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
         Query query = session.createQuery("from Marks m where m.id=:id");
+        query.setParameter("id",id);
         List<Marks> marks = query.list();
         session.getTransaction().commit();
         return ifExists(marks);

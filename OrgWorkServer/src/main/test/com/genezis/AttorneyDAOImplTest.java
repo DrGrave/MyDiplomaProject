@@ -10,6 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 /**
  * Created by Vadim on 09.04.2017.
@@ -17,10 +18,10 @@ import java.security.NoSuchAlgorithmException;
 @Transactional()
 public class AttorneyDAOImplTest {
     ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-    AttorneyDAO attorneyDAO = context.getBean(AttorneyDAO.class);
-    UserDAO userDAO = context.getBean(UserDAO.class);
-    TypeOfAttorneyDAO typeOfAttorneyDAO = context.getBean(TypeOfAttorneyDAO.class);
-    SubjectDAO subjectDAO = context.getBean(SubjectDAO.class);
+    private AttorneyDAO attorneyDAO = context.getBean(AttorneyDAO.class);
+    private UserDAO userDAO = context.getBean(UserDAO.class);
+    private TypeOfAttorneyDAO typeOfAttorneyDAO = context.getBean(TypeOfAttorneyDAO.class);
+    private SubjectDAO subjectDAO = context.getBean(SubjectDAO.class);
 
     @Test
     public void addAttorney() throws NoSuchAlgorithmException {
@@ -38,6 +39,13 @@ public class AttorneyDAOImplTest {
         attorney.setSubject(subject);
         attorney.setTypeOfAttorney(typeOfAttorney);
         attorneyDAO.saveAttorney(attorney);
+    }
+
+    @Test
+    public void listOfAttorneys() throws NoSuchAlgorithmException{
+        List<Attorney> attorneyList;
+        attorneyList = attorneyDAO.listAttorney();
+        System.out.print(attorneyList.get(1));
     }
 
     @Test

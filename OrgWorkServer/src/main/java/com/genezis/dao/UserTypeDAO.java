@@ -12,4 +12,5 @@ public interface UserTypeDAO {
     List<UserType> list();
     UserType getUserTypeById(int id);
     void deleteUserType(UserType userType);
+    UserType editUserType(UserType userType);
 }

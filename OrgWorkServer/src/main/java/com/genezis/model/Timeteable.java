@@ -23,6 +23,9 @@ public class Timeteable {
     @Column(name = "TimeOfEndWork")
     private Time timeToEnd;
 
+    @Column(name = "Auditory")
+    private String auditory;
+
     @OneToOne
     @JoinColumn(name = "IdUser")
     private MyUser MyUser;
@@ -77,6 +80,14 @@ public class Timeteable {
 
     public void setSubject(Subject subject) {
         this.subject = subject;
+    }
+
+    public String getAuditory() {
+        return auditory;
+    }
+
+    public void setAuditory(String auditory) {
+        this.auditory = auditory;
     }
 
     @Override
