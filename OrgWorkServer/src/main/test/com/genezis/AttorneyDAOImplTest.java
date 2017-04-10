@@ -65,4 +65,11 @@ public class AttorneyDAOImplTest {
     //    attorneyDAO.deleteAttorney(attorney);
     }
 
+    @Test
+    public void ifExist() throws NoSuchAlgorithmException{
+        Attorney attorney = attorneyDAO.getAttorneyById(1);
+        attorneyDAO.ifExistsAttorney(attorney);
+        System.out.print(attorneyDAO.ifExistsAttorney(attorney));
+    }
+
 }

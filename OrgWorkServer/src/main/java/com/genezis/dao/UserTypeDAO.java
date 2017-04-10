@@ -13,4 +13,5 @@ public interface UserTypeDAO {
     UserType getUserTypeById(int id);
     void deleteUserType(UserType userType);
     UserType editUserType(UserType userType);
+    UserType ifExistsUserType(UserType userType);
 }

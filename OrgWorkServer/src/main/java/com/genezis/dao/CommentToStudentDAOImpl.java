@@ -65,6 +65,11 @@ public class CommentToStudentDAOImpl implements CommentToStudentDAO{
         session.getTransaction().commit();
     }
 
+    @Override
+    public CommentToStudent ifExistsCommentToSudent(CommentToStudent commentToStudent) {
+        return null;
+    }
+
     private CommentToStudent ifExists(List<CommentToStudent> commentToStudents){
         if(commentToStudents.size() > 0){
             return commentToStudents.get(0);

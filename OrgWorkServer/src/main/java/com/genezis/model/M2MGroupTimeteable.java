@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Created by Vadim on 04.04.2017.
  */
 @Entity
-@Table(name = "m2m_group_timeteable")
+@Table(name = "M2M_Group_Timeteable")
 public class M2MGroupTimeteable {
 
     @Id

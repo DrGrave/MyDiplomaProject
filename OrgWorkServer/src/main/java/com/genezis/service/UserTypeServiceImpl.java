@@ -23,4 +23,19 @@ public class UserTypeServiceImpl implements UserTypeService {
     public UserType getUserTypeById(int id) {
         return userTypeDAO.getUserTypeById(id);
     }
+
+    @Override
+    public UserType editUserType(UserType userType) {
+        return userTypeDAO.editUserType(userType);
+    }
+
+    @Override
+    public void deleteUserType(UserType userType) {
+        userTypeDAO.deleteUserType(userType);
+    }
+
+    @Override
+    public UserType ifExists(UserType userType) {
+       return userTypeDAO.ifExistsUserType(userType);
+    }
 }

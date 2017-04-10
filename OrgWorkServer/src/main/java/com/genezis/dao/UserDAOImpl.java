@@ -68,6 +68,20 @@ public class UserDAOImpl implements UserDAO{
         return MyUser;
     }
 
+    @Override
+    public MyUser ifExistsMyUser(MyUser myUser) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from MyUser my where my.userName=:userName and my.userSurname=:userSurname and my.userSeccondname=:userSeccondname and my.studentGroup=:studentGroup");
+        query.setParameter("userName", myUser.getUserName());
+        query.setParameter("userSurname", myUser.getUserSurname());
+        query.setParameter( "userSeccondname", myUser.getUserSeccondname());
+        query.setParameter("studentGroup", myUser.getStudentGroup());
+        List<MyUser> myUsers = query.list();
+        session.getTransaction().commit();
+        return ifExists(myUsers);
+    }
+
     private MyUser ifExists(List<MyUser> myUserList){
         if(myUserList.size() > 0){
             return myUserList.get(0);

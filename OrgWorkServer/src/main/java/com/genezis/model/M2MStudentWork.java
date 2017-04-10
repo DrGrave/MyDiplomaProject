@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Created by Vadim on 04.04.2017.
  */
 @Entity
-@Table(name = "m2m_student_work")
+@Table(name = "M2M_Student_Work")
 public class M2MStudentWork {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
