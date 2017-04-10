@@ -3,10 +3,15 @@ package com.genezis.service;
 import com.genezis.dao.WorkDAO;
 import com.genezis.model.Work;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by vadim on 03.04.17.
  */
+
+@Service("workService")
+@Transactional
 public class WorkServiceImpl implements WorkService {
     private ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
     private WorkDAO workDAO = context.getBean(WorkDAO.class);
