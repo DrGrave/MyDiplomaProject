@@ -1,7 +1,14 @@
 package com.genezis.service;
 
+import com.genezis.model.Queue;
+
 /**
  * Created by vadim on 03.04.17.
  */
 public interface QueueService {
+    void saveQueue(Queue queue);
+    Queue getQueue(int id);
+    Queue editQueue(Queue queue);
+    void deleteQueue(Queue queue);
+    Queue ifExists(Queue queue);
 }
