@@ -41,7 +41,7 @@ public class AppController {
     @RequestMapping(value = "/userType/", method = RequestMethod.POST)
     public ResponseEntity<Void> createUser(@RequestBody UserType userType,    UriComponentsBuilder ucBuilder) {
         System.out.println("Creating UserType " + userType.getNameUserType());
-        
+
         userTypeService.saveUserType(userType);
 
         HttpHeaders headers = new HttpHeaders();
