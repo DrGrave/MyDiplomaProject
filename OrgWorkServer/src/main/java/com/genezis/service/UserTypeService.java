@@ -8,4 +8,7 @@ import com.genezis.model.UserType;
 public interface UserTypeService {
     void saveUserType(UserType userType);
     UserType getUserTypeById(int id);
+    UserType editUserType(UserType userType);
+    void deleteUserType(UserType userType);
+    UserType ifExists(UserType userType);
 }

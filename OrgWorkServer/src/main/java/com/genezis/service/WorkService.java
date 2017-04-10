@@ -8,4 +8,8 @@ import com.genezis.model.Work;
  */
 public interface WorkService {
     void saveWork(Work work);
+    Work editWork(Work work);
+    void deleteWork(Work work);
+    Work ifExistsWork(Work work);
+    Work getWorkById(int id);
 }

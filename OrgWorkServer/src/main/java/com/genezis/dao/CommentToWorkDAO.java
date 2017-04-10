@@ -11,4 +11,5 @@ public interface CommentToWorkDAO {
     CommentToWork getCommentToWorkById(int id);
     CommentToWork editCommentToWork(CommentToWork commentToWork);
     void deleteCommentToWork(CommentToWork commentToWork);
+    CommentToWork ifExistsCommentToWork(CommentToWork commentToWork);
 }

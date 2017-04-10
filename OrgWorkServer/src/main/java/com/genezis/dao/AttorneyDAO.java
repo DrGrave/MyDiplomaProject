@@ -13,4 +13,5 @@ public interface AttorneyDAO {
     Attorney getAttorneyById(int id);
     Attorney editAttorney(Attorney attorney);
     void deleteAttorney(Attorney attorney);
+    Attorney ifExistsAttorney(Attorney attorney);
 }

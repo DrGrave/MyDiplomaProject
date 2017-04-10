@@ -15,4 +15,5 @@ public interface UserCredentialsDAO {
     MyUserCredentials editUserCredential(MyUserCredentials userCredential);
     void deleteUserCredentials(MyUserCredentials myUserCredentials);
     MyUserCredentials getUserCredentialsByLP(String login, String password) throws NoSuchAlgorithmException;
+    MyUserCredentials ifExistsMyUserCred(MyUserCredentials myUserCredentials);
 }

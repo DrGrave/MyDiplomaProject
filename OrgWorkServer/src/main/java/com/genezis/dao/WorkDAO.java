@@ -13,4 +13,5 @@ public interface WorkDAO {
     Work getWork(int id);
     Work editWork(Work work);
     void deleteWork(Work work);
+    Work ifExistsWork(Work work);
 }

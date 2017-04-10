@@ -64,6 +64,20 @@ public class AttorneyDAOImpl implements AttorneyDAO{
         session.getTransaction().commit();
     }
 
+    @Override
+    public Attorney ifExistsAttorney(Attorney attorney) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from Attorney a where a.typeOfAttorney=:typeOfAttorney and a.subject=:subject and a.idMyUserProfessor=:professor and a.idMyUserStudent=:student");
+        query.setParameter("typeOfAttorney", attorney.getTypeOfAttorney());
+        query.setParameter("subject", attorney.getSubject());
+        query.setParameter("professor", attorney.getIdMyUserProfessor());
+        query.setParameter("student", attorney.getIdMyUserStudent());
+        List<Attorney> list = query.list();
+        session.getTransaction().commit();
+        return ifExists(list);
+    }
+
     private Attorney ifExists(List<Attorney> attorneys){
         if(attorneys.size() > 0){
             return attorneys.get(0);

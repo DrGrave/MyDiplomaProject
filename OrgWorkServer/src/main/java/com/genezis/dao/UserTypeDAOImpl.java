@@ -65,6 +65,17 @@ public class UserTypeDAOImpl implements UserTypeDAO{
         return userType;
     }
 
+    @Override
+    public UserType ifExistsUserType(UserType userType) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from UserType ut where ut.nameUserType=:nameUserType");
+        query.setParameter("nameUserType",userType.getNameUserType());
+        List<UserType> list = query.list();
+        session.getTransaction().commit();
+        return ifExists(list);
+    }
+
     private UserType ifExists(List<UserType> userList){
         if(userList.size() > 0){
             return userList.get(0);

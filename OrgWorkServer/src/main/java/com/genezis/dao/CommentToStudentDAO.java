@@ -11,4 +11,5 @@ public interface CommentToStudentDAO {
     CommentToStudent getCommentToStudentById(int id);
     CommentToStudent editCommentToStudent(CommentToStudent commentToStudent);
     void deleteCommentToStudent(CommentToStudent commentToStudent);
+    CommentToStudent ifExistsCommentToSudent(CommentToStudent commentToStudent);
 }

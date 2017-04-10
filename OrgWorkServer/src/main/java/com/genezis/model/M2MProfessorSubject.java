@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Created by Vadim on 04.04.2017.
  */
 @Entity
-@Table(name = "m2m_professor_subject")
+@Table(name = "M2M_Professor_Subject")
 public class M2MProfessorSubject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

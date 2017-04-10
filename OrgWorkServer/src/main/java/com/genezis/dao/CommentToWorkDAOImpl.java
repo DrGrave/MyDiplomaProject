@@ -65,6 +65,11 @@ public class CommentToWorkDAOImpl implements CommentToWorkDAO{
         session.getTransaction().commit();
     }
 
+    @Override
+    public CommentToWork ifExistsCommentToWork(CommentToWork commentToWork) {
+        return null;
+    }
+
     private CommentToWork ifExists(List<CommentToWork> commentToWorks){
         if(commentToWorks.size() > 0){
             return commentToWorks.get(0);

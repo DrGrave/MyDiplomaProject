@@ -103,6 +103,11 @@ public class UserCredentialsDAOImpl implements UserCredentialsDAO {
         return sb.toString();
     }
 
+    @Override
+    public MyUserCredentials ifExistsMyUserCred(MyUserCredentials myUserCredentials) {
+        return null;
+    }
+
     private MyUserCredentials ifExists(List<MyUserCredentials> myUserCredentialsList){
         if(myUserCredentialsList.size() > 0){
             return myUserCredentialsList.get(0);

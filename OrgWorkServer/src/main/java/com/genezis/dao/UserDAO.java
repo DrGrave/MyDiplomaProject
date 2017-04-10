@@ -13,4 +13,5 @@ public interface UserDAO {
     MyUser getUserById(int id);
     void deleteUser(MyUser MyUser);
     MyUser editUser(MyUser MyUser);
+    MyUser ifExistsMyUser(MyUser myUser);
 }
