@@ -67,6 +67,10 @@ public class TypeOfAttorneyDAOImpl implements TypeOfAttorneyDAO{
         session.getTransaction().commit();
     }
 
+    @Override
+    public TypeOfAttorney ifExistsTypeOfAttorney(TypeOfAttorney typeOfAttorney) {
+        return null;
+    }
 
     private TypeOfAttorney ifExists(List<TypeOfAttorney> typeOfAttorneys){
         if(typeOfAttorneys.size() > 0){

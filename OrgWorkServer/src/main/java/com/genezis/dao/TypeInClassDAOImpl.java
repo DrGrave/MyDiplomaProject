@@ -67,6 +67,11 @@ public class TypeInClassDAOImpl implements TypeInClassDAO{
         session.getTransaction().commit();
     }
 
+    @Override
+    public TypeInClass ifExistsTypeInClass(TypeInClass typeInClass) {
+        return null;
+    }
+
     private TypeInClass ifExists(List<TypeInClass> typeInClasses){
         if(typeInClasses.size() > 0){
             return typeInClasses.get(0);

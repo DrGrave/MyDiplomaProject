@@ -1,5 +1,6 @@
 package com.genezis.service;
 
+import com.genezis.dao.*;
 import com.genezis.model.StudentGroup;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
@@ -12,29 +13,31 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class GroupServiceImpl implements GroupService {
     private ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+    private GroupDAO groupDAO = context.getBean(GroupDAO.class);
+
 
     @Override
     public void saveStudentGroup(StudentGroup studentGroup) {
-
+        groupDAO.saveGroup(studentGroup);
     }
 
     @Override
     public StudentGroup getStudentGroup(int id) {
-        return null;
+        return groupDAO.getGroupById(id);
     }
 
     @Override
     public StudentGroup editStudentGroup(StudentGroup studentGroup) {
-        return null;
+        return groupDAO.editGroup(studentGroup);
     }
 
     @Override
     public void deleteStudentGroup(StudentGroup studentGroup) {
-
+        groupDAO.deleteGroup(studentGroup);
     }
 
     @Override
     public StudentGroup ifExists(StudentGroup studentGroup) {
-        return null;
+        return groupDAO.ifExistsStudentGroup(studentGroup);
     }
 }

@@ -67,6 +67,11 @@ public class TypeOfWorkDAOImpl implements TypeOfWorkDAO{
         session.getTransaction().commit();
     }
 
+    @Override
+    public TypeOfWork ifExistsTypeOfWork(TypeOfWork typeOfWork) {
+        return null;
+    }
+
     private TypeOfWork ifExists(List<TypeOfWork> typeOfWorks){
         if(typeOfWorks.size() > 0){
             return typeOfWorks.get(0);

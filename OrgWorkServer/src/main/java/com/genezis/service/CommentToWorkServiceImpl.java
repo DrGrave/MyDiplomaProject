@@ -1,5 +1,6 @@
 package com.genezis.service;
 
+import com.genezis.dao.*;
 import com.genezis.model.CommentToWork;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
@@ -12,29 +13,30 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CommentToWorkServiceImpl implements CommentToWorkService {
     private ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+    private CommentToWorkDAO commentToWorkDAO = context.getBean(CommentToWorkDAO.class);
 
     @Override
     public void saveCommentToWork(CommentToWork commentToWork) {
-
+        commentToWorkDAO.saveCommentToWork(commentToWork);
     }
 
     @Override
     public CommentToWork getCommentToWork(int id) {
-        return null;
+        return commentToWorkDAO.getCommentToWorkById(id);
     }
 
     @Override
     public CommentToWork editCommentToWork(CommentToWork commentToWork) {
-        return null;
+        return commentToWorkDAO.editCommentToWork(commentToWork);
     }
 
     @Override
     public void deleteCommentToWork(CommentToWork commentToWork) {
-
+        commentToWorkDAO.deleteCommentToWork(commentToWork);
     }
 
     @Override
     public CommentToWork ifExists(CommentToWork commentToWork) {
-        return null;
+        return commentToWorkDAO.ifExistsCommentToWork(commentToWork);
     }
 }

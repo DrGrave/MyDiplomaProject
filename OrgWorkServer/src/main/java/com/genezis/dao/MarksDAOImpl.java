@@ -67,6 +67,11 @@ public class MarksDAOImpl implements MarksDAO{
         session.getTransaction().commit();
     }
 
+    @Override
+    public Marks ifExistsMarks(Marks marks) {
+        return null;
+    }
+
     private Marks ifExists(List<Marks> marks){
         if(marks.size() > 0){
             return marks.get(0);

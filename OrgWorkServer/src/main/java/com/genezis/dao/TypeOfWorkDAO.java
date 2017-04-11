@@ -13,4 +13,5 @@ public interface TypeOfWorkDAO {
     TypeOfWork getTypeOfWork(int id);
     TypeOfWork editTypeOfWork(TypeOfWork typeOfWork);
     void deleteTypeOfWork(TypeOfWork typeOfWork);
+    TypeOfWork ifExistsTypeOfWork(TypeOfWork typeOfWork);
 }

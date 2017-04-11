@@ -67,6 +67,11 @@ public class QueueDAOImpl implements QueueDAO{
         session.getTransaction().commit();
     }
 
+    @Override
+    public Queue ifExistsQueue(Queue queue) {
+        return null;
+    }
+
     private Queue ifExists(List<Queue> queues){
         if(queues.size() > 0){
             return queues.get(0);

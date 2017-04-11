@@ -1,5 +1,6 @@
 package com.genezis.service;
 
+import com.genezis.dao.MarksDAO;
 import com.genezis.model.Marks;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
@@ -12,29 +13,29 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class MarksServiceImpl implements MarksService{
     private ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-
+    private MarksDAO marksDAO = context.getBean(MarksDAO.class);
     @Override
     public void saveMarks(Marks marks) {
-
+        marksDAO.saveMarks(marks);
     }
 
     @Override
     public Marks getMarks(int id) {
-        return null;
+        return marksDAO.getMarks(id);
     }
 
     @Override
     public Marks editMarks(Marks marks) {
-        return null;
+        return marksDAO.editMarks(marks);
     }
 
     @Override
     public void deleteMarks(Marks marks) {
-
+        marksDAO.deleteMarks(marks);
     }
 
     @Override
     public Marks ifExists(Marks marks) {
-        return null;
+        return marksDAO.ifExistsMarks(marks);
     }
 }

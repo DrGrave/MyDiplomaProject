@@ -66,6 +66,14 @@ public class GroupDAOImpl implements GroupDAO{
         session.getTransaction().commit();
     }
 
+    @Override
+    public StudentGroup ifExistsStudentGroup(StudentGroup studentGroup) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from StudentGroup sg ");
+        return null;
+    }
+
     private StudentGroup ifExists(List<StudentGroup> studentGroups){
         if(studentGroups.size() > 0){
             return studentGroups.get(0);

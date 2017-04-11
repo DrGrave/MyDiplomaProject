@@ -67,6 +67,11 @@ public class TimeteableDAOImpl implements TimeteableDAO{
         session.getTransaction().commit();
     }
 
+    @Override
+    public Timeteable ifExistsTimeteable(Timeteable timeteable) {
+        return null;
+    }
+
     private Timeteable ifExists(List<Timeteable> timeteables){
         if(timeteables.size() > 0){
             return timeteables.get(0);

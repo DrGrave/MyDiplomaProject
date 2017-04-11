@@ -67,6 +67,11 @@ public class SubjectDAOImpl implements SubjectDAO{
         session.getTransaction().commit();
     }
 
+    @Override
+    public Subject ifExistsSubject(Subject subject) {
+        return null;
+    }
+
     private Subject ifExists(List<Subject> subjects){
         if(subjects.size() > 0){
             return subjects.get(0);

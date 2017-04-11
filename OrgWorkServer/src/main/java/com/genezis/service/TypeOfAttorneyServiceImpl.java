@@ -1,5 +1,6 @@
 package com.genezis.service;
 
+import com.genezis.dao.TypeOfAttorneyDAO;
 import com.genezis.model.TypeOfAttorney;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
@@ -12,29 +13,29 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class TypeOfAttorneyServiceImpl implements TypeOfAttorneyService {
     private ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-
+    private TypeOfAttorneyDAO typeOfAttorneyDAO = context.getBean(TypeOfAttorneyDAO.class);
     @Override
     public void saveTypeOfAttorney(TypeOfAttorney typeOfAttorney) {
-
+        typeOfAttorneyDAO.saveTypeOfAttorney(typeOfAttorney);
     }
 
     @Override
     public TypeOfAttorney getTypeOfAttorney(int id) {
-        return null;
+        return typeOfAttorneyDAO.getTypeOfAttorney(id);
     }
 
     @Override
     public TypeOfAttorney editTypeOfAttorney(TypeOfAttorney typeOfAttorney) {
-        return null;
+        return typeOfAttorneyDAO.editTypeOfAttorney(typeOfAttorney);
     }
 
     @Override
     public void deleteTypeOfAttorney(TypeOfAttorney typeOfAttorney) {
-
+        typeOfAttorneyDAO.deleteTypeOfAttorney(typeOfAttorney);
     }
 
     @Override
     public TypeOfAttorney ifExists(TypeOfAttorney typeOfAttorney) {
-        return null;
+        return typeOfAttorneyDAO.ifExistsTypeOfAttorney(typeOfAttorney);
     }
 }

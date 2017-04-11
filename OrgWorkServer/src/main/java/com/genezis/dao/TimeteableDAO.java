@@ -13,4 +13,5 @@ public interface TimeteableDAO {
     Timeteable getTimeteable(int id);
     Timeteable editTimeteable(Timeteable timeteable);
     void deleteTimeteable(Timeteable timeteable);
+    Timeteable ifExistsTimeteable(Timeteable timeteable);
 }

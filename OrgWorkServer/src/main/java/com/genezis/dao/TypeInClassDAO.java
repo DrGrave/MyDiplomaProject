@@ -2,6 +2,7 @@ package com.genezis.dao;
 
 import com.genezis.model.TypeInClass;
 
+
 import java.util.List;
 
 /**
@@ -13,4 +14,5 @@ public interface TypeInClassDAO {
     TypeInClass getTypeInClass(int id);
     TypeInClass editTypeInClass(TypeInClass typeInClass);
     void deleteTypeInClass(TypeInClass typeInClass);
+    TypeInClass ifExistsTypeInClass(TypeInClass typeInClass);
 }

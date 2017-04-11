@@ -66,6 +66,12 @@ public class InClassDAOImpl implements InClassDAO{
         session.delete(inClass);
         session.getTransaction().commit();
     }
+
+    @Override
+    public InClass ifExistsInClass(InClass inClass) {
+        return null;
+    }
+
     private InClass ifExists(List<InClass> inClasses){
         if(inClasses.size() > 0){
             return inClasses.get(0);

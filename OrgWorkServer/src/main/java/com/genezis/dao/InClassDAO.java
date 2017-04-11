@@ -11,4 +11,5 @@ public interface InClassDAO {
     InClass getInClass(int id);
     InClass editInClass(InClass inClass);
     void deleteInClass(InClass inClass);
+    InClass ifExistsInClass(InClass inClass);
 }

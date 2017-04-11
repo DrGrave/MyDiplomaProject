@@ -1,5 +1,6 @@
 package com.genezis.service;
 
+import com.genezis.dao.SubjectDAO;
 import com.genezis.model.Subject;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
@@ -12,29 +13,29 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class SubjectServiceImpl implements SubjectService {
     private ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-
+    private SubjectDAO subjectDAO = context.getBean(SubjectDAO.class);
     @Override
     public void saveSubject(Subject subject) {
-
+        subjectDAO.saveSubject(subject);
     }
 
     @Override
     public Subject getSubject(int id) {
-        return null;
+        return subjectDAO.getSubject(id);
     }
 
     @Override
     public Subject editSubject(Subject subject) {
-        return null;
+        return subjectDAO.editSubject(subject);
     }
 
     @Override
     public void deleteSubject(Subject subject) {
-
+        subjectDAO.deleteSubject(subject);
     }
 
     @Override
     public Subject ifExists(Subject subject) {
-        return null;
+        return subjectDAO.ifExistsSubject(subject);
     }
 }

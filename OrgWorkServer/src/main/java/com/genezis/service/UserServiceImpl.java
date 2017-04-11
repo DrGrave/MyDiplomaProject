@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserServiceImpl implements UserService {
     private ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-    UserDAO userDAO = context.getBean(UserDAO.class);
+    private UserDAO userDAO = context.getBean(UserDAO.class);
     @Override
     public void saveMyUser(MyUser myUser) {
     userDAO.saveUser(myUser);

@@ -13,4 +13,5 @@ public interface TypeOfAttorneyDAO {
     TypeOfAttorney getTypeOfAttorney(int id);
     TypeOfAttorney editTypeOfAttorney(TypeOfAttorney typeOfAttorney);
     void deleteTypeOfAttorney(TypeOfAttorney typeOfAttorney);
+    TypeOfAttorney ifExistsTypeOfAttorney(TypeOfAttorney typeOfAttorney);
 }

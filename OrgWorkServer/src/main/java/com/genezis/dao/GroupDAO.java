@@ -11,4 +11,5 @@ public interface GroupDAO {
     StudentGroup getGroupById(int id);
     StudentGroup editGroup(StudentGroup studentGroup);
     void deleteGroup(StudentGroup studentGroup);
+    StudentGroup ifExistsStudentGroup(StudentGroup studentGroup);
 }

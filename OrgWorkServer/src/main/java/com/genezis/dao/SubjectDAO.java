@@ -13,4 +13,5 @@ public interface SubjectDAO {
     Subject getSubject(int id);
     Subject editSubject(Subject subject);
     void deleteSubject(Subject subject);
+    Subject ifExistsSubject(Subject subject);
 }
