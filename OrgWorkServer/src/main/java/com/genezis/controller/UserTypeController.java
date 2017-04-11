@@ -49,9 +49,4 @@ public class UserTypeController {
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
-    public static void main(String args[]){
-        UserType userType = new UserType();
-        userType.setNameUserType("TestService");
-    }
-
 }
