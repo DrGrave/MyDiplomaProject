@@ -21,6 +21,26 @@ public class M2MStudentWork {
             @JoinColumn(name = "IdUser")
     private MyUser idUser;
 
+    @OneToOne
+        @JoinColumn(name = "IdTypeOfAccepted")
+    private TypeOfAcceptWork idOfAccaptWork;
+
+    public int getIdM2MStudentWork() {
+        return idM2MStudentWork;
+    }
+
+    public void setIdM2MStudentWork(int idM2MStudentWork) {
+        this.idM2MStudentWork = idM2MStudentWork;
+    }
+
+    public TypeOfAcceptWork getIdOfAccaptWork() {
+        return idOfAccaptWork;
+    }
+
+    public void setIdOfAccaptWork(TypeOfAcceptWork idOfAccaptWork) {
+        this.idOfAccaptWork = idOfAccaptWork;
+    }
+
     public Work getIdOfWork() {
         return idOfWork;
     }

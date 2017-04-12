@@ -14,4 +14,5 @@ public interface QueueDAO {
     Queue editQueue(Queue queue);
     void deleteQuee(Queue queue);
     Queue ifExistsQueue(Queue queue);
+    List<Queue> listQueueProfessorById(int id);
 }

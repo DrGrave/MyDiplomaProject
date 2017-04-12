@@ -56,4 +56,10 @@ public class QueueDAOImplTest {
         Queue queue = queueDAO.getQueue(1);
    //     queueDAO.deleteQuee(queue);
     }
+
+    @Test
+    public void getList(){
+        List<Queue> queues = queueDAO.listQueueProfessorById(1);
+        System.out.print(queues);
+    }
 }

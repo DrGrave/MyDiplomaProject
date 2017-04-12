@@ -10,5 +10,5 @@ public interface UserTypeService {
     UserType getUserTypeById(int id);
     UserType editUserType(UserType userType);
     void deleteUserType(UserType userType);
-    UserType ifExists(UserType userType);
+    boolean ifExists(UserType userType);
 }

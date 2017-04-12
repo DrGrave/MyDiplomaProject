@@ -21,7 +21,7 @@ public class MyUser {
     private String userSeccondname;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IdGroup")
     private StudentGroup studentGroup;
 

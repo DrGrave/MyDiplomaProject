@@ -35,7 +35,7 @@ public class UserTypeServiceImpl implements UserTypeService {
     }
 
     @Override
-    public UserType ifExists(UserType userType) {
-       return userTypeDAO.ifExistsUserType(userType);
+    public boolean ifExists(UserType userType) {
+       return userTypeDAO.ifExistsUserType(userType) != null;
     }
 }

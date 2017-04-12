@@ -42,4 +42,9 @@ public class UserCredentialsServiceImpl implements UserCredentialsService {
         userCredentialsDAO.ifExistsMyUserCred(myUserCredentials);
         return null;
     }
+
+    @Override
+    public MyUserCredentials getUserCredentialsByLP(String login, String password) throws NoSuchAlgorithmException {
+        return  userCredentialsDAO.getUserCredentialsByLP(login, password);
+    }
 }

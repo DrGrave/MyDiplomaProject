@@ -40,6 +40,7 @@
                 <value>com.genezis.model.M2MProfessorSubject</value>
                 <value>com.genezis.model.M2MGroupTimeteable</value>
                 <value>com.genezis.model.M2MStudentWork</value>
+                <value>com.genezis.model.TypeOfAcceptWork</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -50,6 +51,10 @@
 
             </props>
         </property>
+    </bean>
+
+    <bean id="typeOfAcceptedWorkDAO" class="com.genezis.dao.TypeOfAccaptWorkDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
     <bean id="m2mGroupTimeteableDAO" class="com.genezis.dao.M2MGroupTimeteableDAOImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>

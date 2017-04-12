@@ -3,6 +3,7 @@ package com.genezis;
 import com.genezis.dao.*;
 import com.genezis.model.M2MGroupTimeteable;
 import com.genezis.model.M2MStudentWork;
+import com.genezis.model.TypeOfAcceptWork;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,10 +34,15 @@ public class M2MStudentWorkDAOImplTest {
     WorkDAO workDAO = context.getBean(WorkDAO.class);
     M2MGroupTimeteableDAO m2mGroupTimeteableDAO = context.getBean(M2MGroupTimeteableDAO.class);
     M2MStudentWorkDAO m2mStudentWorkDAO = context.getBean(M2MStudentWorkDAO.class);
+    TypeOfAccaptWorkDAO typeOfAccaptWorkDAO = context.getBean(TypeOfAccaptWorkDAO.class);
 
     @Test
     public void add()throws NoSuchAlgorithmException {
         M2MStudentWork m2MStudentWork = new M2MStudentWork();
+        TypeOfAcceptWork typeOfAcceptWork = new TypeOfAcceptWork();
+        typeOfAcceptWork.setNameOfAccaptWork("Accapt");
+        typeOfAccaptWorkDAO.saveTypeOfAccaptWork(typeOfAcceptWork);
+        m2MStudentWork.setIdOfAccaptWork(typeOfAcceptWork);
         m2MStudentWork.setIdOfWork(workDAO.getWork(1));
         m2MStudentWork.setIdUser(userDAO.getUserById(1));
         m2mStudentWorkDAO.saveM2MStudentWork(m2MStudentWork);

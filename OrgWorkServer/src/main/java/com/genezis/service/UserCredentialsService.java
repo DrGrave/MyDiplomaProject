@@ -13,4 +13,5 @@ public interface UserCredentialsService {
     MyUserCredentials editMyUserCredentials(MyUserCredentials myUserCredentials);
     void deleteMyUserCredentials(MyUserCredentials myUserCredentials);
     MyUserCredentials ifExists(MyUserCredentials myUserCredentials);
+    MyUserCredentials getUserCredentialsByLP(String login, String password) throws NoSuchAlgorithmException;
 }

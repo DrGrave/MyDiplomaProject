@@ -6,6 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by vadim on 03.04.17.
  */
@@ -37,5 +39,10 @@ public class QueueServiceImpl implements QueueService {
     @Override
     public Queue ifExists(Queue queue) {
         return queueDAO.ifExistsQueue(queue);
+    }
+
+    @Override
+    public List<Queue> getListToProfessorById(int id) {
+        return queueDAO.listQueueProfessorById(id);
     }
 }

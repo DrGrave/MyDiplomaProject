@@ -38,14 +38,16 @@ public class UserTypeController {
         return new ResponseEntity<UserType>(userType, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/userType/", method = RequestMethod.POST)
+    @RequestMapping(value = "/userType/create", method = RequestMethod.POST)
     public ResponseEntity<Void> createUser(@RequestBody UserType userType,    UriComponentsBuilder ucBuilder) {
         System.out.println("Creating UserType " + userType.getNameUserType());
-
+        if (userTypeService.ifExists(userType)) {
+            System.out.println("A UserType with name " + userType.getNameUserType() + " already exist");
+            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+        }
         userTypeService.saveUserType(userType);
-
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(userType.getIdUserType()).toUri());
+        headers.setLocation(ucBuilder.path("/userType/{id}").buildAndExpand(userType.getIdUserType()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 

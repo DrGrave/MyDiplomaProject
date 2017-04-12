@@ -11,14 +11,12 @@ public class StudentGroup {
     @Id
     @Column(name="IdGroup")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private
-    int idGroup;
+    private int idGroup;
 
     @Column(name = "NumberOfGroup")
-    private
-    String numberOfGroup;
+    private String numberOfGroup;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "IdUserStarosta", nullable = false)
     private MyUser idMyUserStarosta;
 
