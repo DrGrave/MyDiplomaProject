@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -39,6 +40,9 @@ public class CommentToWorkDAOImplTest {
         commentToWork.setStudent(userDAO.getUserById(2));
         commentToWork.setTextOfCommentWork("BadWork");
         commentToWork.setWork(workDAO.getWork(1));
+        long curTime = System.currentTimeMillis();
+        Date curDate = new Date(curTime);
+        commentToWork.setDate(curDate);
         commentToWorkDAO.saveCommentToWork(commentToWork);
     }
 

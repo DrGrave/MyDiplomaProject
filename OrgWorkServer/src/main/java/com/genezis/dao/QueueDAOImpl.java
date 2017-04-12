@@ -1,10 +1,12 @@
 package com.genezis.dao;
 
 import com.genezis.model.Queue;
+import com.genezis.model.Work;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -76,6 +78,22 @@ public class QueueDAOImpl implements QueueDAO{
         List<Queue> list = query.list();
         session.getTransaction().commit();
         return list;
+    }
+
+    @Override
+    public List<Work> listOfWorksToStudent(int id, int prof) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from Queue q where q.MyUser.id=:id and q.timeteable.MyUser.id=:prof");
+        query.setParameter("id", id);
+        query.setParameter("prof", prof);
+        List<Queue> list = query.list();
+        session.getTransaction().commit();
+        List<Work> works = new ArrayList<>();
+        for (Queue queue : list){
+            works.add(queue.getWork());
+        }
+        return works;
     }
 
     @Override

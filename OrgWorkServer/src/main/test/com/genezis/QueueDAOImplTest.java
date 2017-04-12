@@ -2,6 +2,7 @@ package com.genezis;
 
 import com.genezis.dao.*;
 import com.genezis.model.Queue;
+import com.genezis.model.Work;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
@@ -57,6 +58,11 @@ public class QueueDAOImplTest {
    //     queueDAO.deleteQuee(queue);
     }
 
+    @Test
+    public void listWorksForStudent(){
+        List<Work> list = queueDAO.listOfWorksToStudent(1,1);
+        System.out.print(list);
+    }
     @Test
     public void getList(){
         List<Queue> queues = queueDAO.listQueueProfessorById(1);

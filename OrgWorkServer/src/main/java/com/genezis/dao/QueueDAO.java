@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.Queue;
+import com.genezis.model.Work;
 
 import java.util.List;
 
@@ -15,4 +16,5 @@ public interface QueueDAO {
     void deleteQuee(Queue queue);
     Queue ifExistsQueue(Queue queue);
     List<Queue> listQueueProfessorById(int id);
+    List<Work> listOfWorksToStudent(int id, int prof);
 }

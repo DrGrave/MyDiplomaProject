@@ -66,6 +66,18 @@ public class CommentToWorkDAOImpl implements CommentToWorkDAO{
     }
 
     @Override
+    public List<CommentToWork> getListForUserByWork(int idWork, int idUser) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from  CommentToWork ctw where ctw.MyUser.id=:idUser and ctw.Work.id=:idWork");
+        query.setParameter("idUser", idUser);
+        query.setParameter("idWork", idWork);
+        List<CommentToWork> commentToWorks = query.list();
+        session.getTransaction().commit();
+        return commentToWorks;
+    }
+
+    @Override
     public CommentToWork ifExistsCommentToWork(CommentToWork commentToWork) {
         return null;
     }

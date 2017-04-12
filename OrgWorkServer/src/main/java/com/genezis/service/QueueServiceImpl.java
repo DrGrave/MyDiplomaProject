@@ -2,6 +2,7 @@ package com.genezis.service;
 
 import com.genezis.dao.QueueDAO;
 import com.genezis.model.Queue;
+import com.genezis.model.Work;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,5 +45,10 @@ public class QueueServiceImpl implements QueueService {
     @Override
     public List<Queue> getListToProfessorById(int id) {
         return queueDAO.listQueueProfessorById(id);
+    }
+
+    @Override
+    public List<Work> listWorksToStudentById(int id, int profid) {
+        return queueDAO.listOfWorksToStudent(id, profid);
     }
 }

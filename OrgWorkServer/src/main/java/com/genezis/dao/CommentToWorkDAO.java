@@ -12,4 +12,5 @@ public interface CommentToWorkDAO {
     CommentToWork editCommentToWork(CommentToWork commentToWork);
     void deleteCommentToWork(CommentToWork commentToWork);
     CommentToWork ifExistsCommentToWork(CommentToWork commentToWork);
+    List<CommentToWork> getListForUserByWork(int idWork, int idUser);
 }

@@ -1,6 +1,7 @@
 package com.genezis.service;
 
 import com.genezis.model.Queue;
+import com.genezis.model.Work;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ public interface QueueService {
     void deleteQueue(Queue queue);
     Queue ifExists(Queue queue);
     List<Queue> getListToProfessorById(int id);
+    List<Work> listWorksToStudentById(int id, int profid);
 }

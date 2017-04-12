@@ -1,6 +1,7 @@
 package com.genezis.model;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 /**
  * Created by vadim on 03.04.17.
@@ -15,6 +16,9 @@ public class CommentToWork {
     @Column(name = "TextOfCommentWork")
     private String textOfCommentWork;
 
+    @Column(name = "DateOfComment")
+    private Date date;
+
     @OneToOne
     @JoinColumn(name = "IdUserProfessor")
     private MyUser professor;
@@ -26,6 +30,14 @@ public class CommentToWork {
     @OneToOne
     @JoinColumn(name = "IdOfWork")
     private Work work;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public int getIdCommentToWork() {
         return idCommentToWork;
