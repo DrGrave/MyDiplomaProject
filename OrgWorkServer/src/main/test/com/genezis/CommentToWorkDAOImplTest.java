@@ -62,4 +62,10 @@ public class CommentToWorkDAOImplTest {
         CommentToWork commentToWork = commentToWorkDAO.getCommentToWorkById(1);
     //    commentToWorkDAO.deleteCommentToWork(commentToWork);
     }
+
+    @Test
+    public void getListComments(){
+        List<CommentToWork> commentToWorks = commentToWorkDAO.getListForUserByWork(1,1);
+        System.out.print(commentToWorks);
+    }
 }
