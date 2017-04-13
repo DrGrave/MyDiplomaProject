@@ -8,6 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 /**
  * Created by Vadim on 09.04.2017.
@@ -47,6 +48,12 @@ public class M2MPofessorSubjectDAOImplTest {
         M2MProfessorSubject m2MProfessorSubject = m2mProfessorSubjectDAO.getM2MProfessorSubject(1);
         m2MProfessorSubject.setIdSubject(subjectDAO.getSubject(2));
         m2mProfessorSubjectDAO.editM2MProfessorSubject(m2MProfessorSubject);
+    }
+
+    @Test
+    public void getListOfSubjects(){
+        List<M2MProfessorSubject> m2MProfessorSubject = m2mProfessorSubjectDAO.getListSubjectsToProfessor(1);
+        System.out.print(m2MProfessorSubject);
     }
     @Test
     public void list()throws NoSuchAlgorithmException{

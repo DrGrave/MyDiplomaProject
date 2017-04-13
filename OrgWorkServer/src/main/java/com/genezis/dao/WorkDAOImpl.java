@@ -83,6 +83,18 @@ public class WorkDAOImpl implements WorkDAO{
         return ifExists(workList);
     }
 
+    @Override
+    public List<Work> listWorksByProfessorSubject(int idProfessor, int idSubject) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from  Work w where  w.MyUser.id=:idProfessor and  w.subject.id=:idSubject");
+        query.setParameter("idProfessor", idProfessor);
+        query.setParameter("idSubject", idSubject);
+        List<Work> workList = query.list();
+        session.getTransaction().commit();
+        return workList;
+    }
+
     private Work ifExists(List<Work> workList){
         if(workList.size() > 0){
             return workList.get(0);

@@ -55,6 +55,12 @@ public class WorkDAOImplTest {
         List<Work> works = workDAO.listWork();
         System.out.print(works);
     }
+
+    @Test
+    public  void ListByProfSubj(){
+        List<Work> workList = workDAO.listWorksByProfessorSubject(1,1);
+        System.out.print(workList);
+    }
     @Test
     public void delete()throws NoSuchAlgorithmException{
         Work work = workDAO.getWork(1);

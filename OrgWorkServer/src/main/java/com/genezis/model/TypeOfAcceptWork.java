@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by Vadim on 12.04.2017.
  */
 @Entity
-@Table(name="typeofaccaptwork")
+@Table(name="TypeOfAccaptWork")
 public class TypeOfAcceptWork {
 
     @Id

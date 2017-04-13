@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.M2MProfessorSubject;
+import com.genezis.model.Subject;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ public interface M2MProfessorSubjectDAO {
     M2MProfessorSubject getM2MProfessorSubject(int id);
     M2MProfessorSubject editM2MProfessorSubject(M2MProfessorSubject m2mProfessorSubject);
     void deleteM2MProfessorSubject(M2MProfessorSubject m2mProfessorSubject);
+    List<M2MProfessorSubject> getListSubjectsToProfessor(int id);
 }

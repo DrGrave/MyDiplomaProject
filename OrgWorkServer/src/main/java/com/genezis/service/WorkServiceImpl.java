@@ -6,6 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by vadim on 03.04.17.
  */
@@ -38,5 +40,10 @@ public class WorkServiceImpl implements WorkService {
     @Override
     public Work getWorkById(int id) {
         return workDAO.getWork(id);
+    }
+
+    @Override
+    public List<Work> getWorksByProfessorSubject(int idProfessor, int idSubject) {
+        return workDAO.listWorksByProfessorSubject(idProfessor, idSubject);
     }
 }

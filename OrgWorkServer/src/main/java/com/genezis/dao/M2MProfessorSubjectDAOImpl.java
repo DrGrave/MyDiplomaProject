@@ -1,6 +1,7 @@
 package com.genezis.dao;
 
 import com.genezis.model.M2MProfessorSubject;
+import com.genezis.model.Subject;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -56,6 +57,17 @@ public class M2MProfessorSubjectDAOImpl implements M2MProfessorSubjectDAO {
         session.beginTransaction();
         session.delete(m2mProfessorSubject);
         session.getTransaction().commit();
+    }
+
+    @Override
+    public List<M2MProfessorSubject> getListSubjectsToProfessor(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from M2MProfessorSubject ps where  ps.idUser.id=:id");
+        query.setParameter("id", id);
+        List<M2MProfessorSubject> list = query.list();
+        session.getTransaction().commit();
+        return list;
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {

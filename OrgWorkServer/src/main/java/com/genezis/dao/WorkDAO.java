@@ -14,4 +14,5 @@ public interface WorkDAO {
     Work editWork(Work work);
     void deleteWork(Work work);
     Work ifExistsWork(Work work);
+    List<Work> listWorksByProfessorSubject(int idProfessor, int idSubject);
 }

@@ -12,7 +12,8 @@ public class M2MGroupTimeteable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int idM2MGroupTimeteable;
+    private
+    int idGroupTimeteablee;
 
     @ManyToOne
         @JoinColumn(name = "IdGroup")
@@ -24,12 +25,12 @@ public class M2MGroupTimeteable {
     private
     Timeteable idTimeteable;
 
-    public int getIdM2MGroupTimeteable() {
-        return idM2MGroupTimeteable;
+    public int getIdGroupTimeteablee() {
+        return idGroupTimeteablee;
     }
 
-    public void setIdM2MGroupTimeteable(int idM2MGroupTimeteable) {
-        this.idM2MGroupTimeteable = idM2MGroupTimeteable;
+    public void setIdGroupTimeteablee(int idGroupTimeteablee) {
+        this.idGroupTimeteablee = idGroupTimeteablee;
     }
 
     public StudentGroup getIdGroup() {

@@ -32,7 +32,7 @@ public class M2MGroupTimeteableDAOImplTest {
     TypeOfWorkDAO typeOfWorkDAO = context.getBean(TypeOfWorkDAO.class);
     UserCredentialsDAO userCredentialsDAO = context.getBean(UserCredentialsDAO.class);
     WorkDAO workDAO = context.getBean(WorkDAO.class);
-    M2MGroupTimeteableDAO m2mGroupTimeteableDAO = context.getBean(M2MGroupTimeteableDAO.class);
+    private M2MGroupTimeteableDAO m2mGroupTimeteableDAO = context.getBean(M2MGroupTimeteableDAO.class);
 
     @Test
     public void add()throws NoSuchAlgorithmException {

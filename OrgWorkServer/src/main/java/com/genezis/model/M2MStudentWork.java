@@ -11,6 +11,7 @@ import java.io.Serializable;
 public class M2MStudentWork {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private
     int idM2MStudentWork;
 
     @ManyToOne
