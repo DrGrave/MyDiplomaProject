@@ -20,8 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 public class TypeOfWorkController {
     @Autowired
-    private
-    TypeOfWorkDAO typeOfWorkDAO;
+    private TypeOfWorkDAO typeOfWorkDAO;
 
 
     /* GET */

@@ -27,8 +27,7 @@ import java.util.List;
 @RestController
 public class QueueController {
     @Autowired
-    private
-    QueueService queueService;
+    private QueueService queueService;
 
     @Autowired
     private CommentToWorkService commentToWorkService;

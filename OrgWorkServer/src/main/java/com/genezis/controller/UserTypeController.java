@@ -22,8 +22,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 public class UserTypeController {
     @Autowired
-    private
-    UserTypeService userTypeService;
+    private UserTypeService userTypeService;
 
 
     /* GET */

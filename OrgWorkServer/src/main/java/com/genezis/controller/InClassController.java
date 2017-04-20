@@ -21,8 +21,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 public class InClassController {
     @Autowired
-    private
-    InClassDAO inClassDAO;
+    private InClassDAO inClassDAO;
 
     @RequestMapping(value = "/inClass/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<InClass> getUserType(@PathVariable("id") int id) {

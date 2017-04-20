@@ -20,7 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 public class TypeInClassController {
     @Autowired
-    TypeInClassDAO typeInClassDAO;
+    private TypeInClassDAO typeInClassDAO;
 
     @RequestMapping(value = "/typeInClass/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TypeInClass> getUserType(@PathVariable("id") int id) {

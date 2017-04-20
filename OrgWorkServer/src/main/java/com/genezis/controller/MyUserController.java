@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MyUserController {
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MyUser> getUser(@PathVariable("id") int id) {

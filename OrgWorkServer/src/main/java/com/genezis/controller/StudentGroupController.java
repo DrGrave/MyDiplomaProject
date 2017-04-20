@@ -21,7 +21,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 public class StudentGroupController {
     @Autowired
-    GroupDAO groupDAO;
+    private GroupDAO groupDAO;
 
     @RequestMapping(value = "/group/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<StudentGroup> getUserType(@PathVariable("id") int id) {

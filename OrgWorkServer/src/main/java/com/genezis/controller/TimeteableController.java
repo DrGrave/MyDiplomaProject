@@ -20,7 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 public class TimeteableController {
     @Autowired
-    TimeteableDAO timeteableDAO;
+    private TimeteableDAO timeteableDAO;
 
     @RequestMapping(value = "/timeteable/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Timeteable> getUserType(@PathVariable("id") int id) {

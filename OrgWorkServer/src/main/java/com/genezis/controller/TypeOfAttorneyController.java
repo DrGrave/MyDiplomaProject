@@ -20,8 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 public class TypeOfAttorneyController {
     @Autowired
-    private
-    TypeOfAttorneyDAO typeOfAttorneyDAO;
+    private TypeOfAttorneyDAO typeOfAttorneyDAO;
 
 
     /* GET */

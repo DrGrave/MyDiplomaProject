@@ -21,7 +21,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 public class M2MGroupTimeteableController {
     @Autowired
-    M2MGroupTimeteableDAO m2MGroupTimeteableDAO;
+    private M2MGroupTimeteableDAO m2MGroupTimeteableDAO;
 
     @RequestMapping(value = "/timetableGroup/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<M2MGroupTimeteable> getUserType(@PathVariable("id") int id) {
