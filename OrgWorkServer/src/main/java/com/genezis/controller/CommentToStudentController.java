@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
-/**
- * Created by vadim on 03.04.17.
- */
 @RestController
 public class CommentToStudentController {
     @Autowired

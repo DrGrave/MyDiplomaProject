@@ -12,9 +12,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.security.NoSuchAlgorithmException;
 
-/**
- * Created by Vadim on 11.04.2017.
- */
 @RestController
 public class MyUserCredentialsController {
     @Autowired

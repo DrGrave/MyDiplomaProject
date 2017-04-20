@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 
-/**
- * Created by vadim on 03.04.17.
- */
 @RestController
 public class UserTypeController {
     @Autowired
