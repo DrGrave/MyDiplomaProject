@@ -1,5 +1,8 @@
 package com.genezis.controller;
 
+import com.genezis.dao.AttorneyDAO;
+import com.genezis.model.Attorney;
+import com.genezis.model.TypeOfAttorney;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,4 +21,17 @@ import org.springframework.web.util.UriComponentsBuilder;
  */
 @RestController
 public class AttorneyController {
+    @Autowired
+    private AttorneyDAO attorneyDAO;
+
+    @RequestMapping(value = "/attorney/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Attorney> getUserType(@PathVariable("id") int id) {
+        System.out.println("Fetching User with id " + id);
+        Attorney attorney = attorneyDAO.getAttorneyById(id);
+        if (attorney == null) {
+            System.out.println("User with id " + id + " not found");
+            return new ResponseEntity<Attorney>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Attorney>(attorney, HttpStatus.OK);
+    }
 }

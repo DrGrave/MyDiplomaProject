@@ -1,5 +1,7 @@
 package com.genezis.controller;
 
+import com.genezis.dao.GroupDAO;
+import com.genezis.model.StudentGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,4 +20,17 @@ import org.springframework.web.util.UriComponentsBuilder;
  */
 @RestController
 public class StudentGroupController {
+    @Autowired
+    GroupDAO groupDAO;
+
+    @RequestMapping(value = "/group/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<StudentGroup> getUserType(@PathVariable("id") int id) {
+        System.out.println("Fetching User with id " + id);
+        StudentGroup studentGroup = groupDAO.getGroupById(id);
+        if (studentGroup == null) {
+            System.out.println("User with id " + id + " not found");
+            return new ResponseEntity<StudentGroup>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<StudentGroup>(studentGroup, HttpStatus.OK);
+    }
 }

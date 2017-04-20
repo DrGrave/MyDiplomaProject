@@ -36,11 +36,11 @@ public class QueueController {
     @RequestMapping(value = "/queue/list/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Queue>> listAllUsers(@PathVariable("id") int id) {
         System.out.print(id);
-        List<Queue> users = queueService.getListToProfessorById(id);
-        if(users.isEmpty()){
+        List<Queue> queues = queueService.getListToProfessorById(id);
+        if(queues.isEmpty()){
             return new ResponseEntity<List<Queue>>(HttpStatus.NOT_FOUND);//You many decide to return HttpStatus.NOT_FOUND
         }
-        return new ResponseEntity<List<Queue>>(users, HttpStatus.OK);
+        return new ResponseEntity<List<Queue>>(queues, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/queue/listworks/student/{id}/professor/{idprof}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
