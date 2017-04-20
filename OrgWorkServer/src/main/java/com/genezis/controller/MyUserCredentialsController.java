@@ -1,6 +1,5 @@
 package com.genezis.controller;
 
-import com.genezis.model.MyUser;
 import com.genezis.model.MyUserCredentials;
 import com.genezis.service.UserCredentialsService;
 import org.springframework.beans.factory.annotation.Autowired;
