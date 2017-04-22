@@ -11,4 +11,5 @@ public interface TimeteableService {
     Timeteable editTimeteable(Timeteable timeteable);
     void deleteTimeteable(Timeteable timeteable);
     Timeteable ifExists(Timeteable timeteable);
+    Timeteable getTimeteableByProfessor(int id);
 }

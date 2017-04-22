@@ -2,6 +2,8 @@ package com.genezis.dao;
 
 import com.genezis.model.Timeteable;
 
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,4 +16,5 @@ public interface TimeteableDAO {
     Timeteable editTimeteable(Timeteable timeteable);
     void deleteTimeteable(Timeteable timeteable);
     Timeteable ifExistsTimeteable(Timeteable timeteable);
+    Timeteable getTimeteableByProfessorIdTime(int id, Time time, Date date);
 }

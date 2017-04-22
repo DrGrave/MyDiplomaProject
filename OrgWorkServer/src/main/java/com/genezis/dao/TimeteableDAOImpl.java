@@ -5,6 +5,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import javax.persistence.TemporalType;
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -68,6 +71,21 @@ public class TimeteableDAOImpl implements TimeteableDAO{
     }
 
     @Override
+    public Timeteable getTimeteableByProfessorIdTime(int id, Time time, Date date1) {
+        Session session = sessionFactory.getCurrentSession();
+        java.sql.Date sqlDate = new java.sql.Date(date1.getTime());
+        session.beginTransaction();
+        Query query = session.createQuery("from Timeteable t where t.MyUser.id=:id and t.timeToEnd>:myTimeEnd and t.time<:timeStart and year(t.date) = year(:date1) and month(t.date) = month(:date1) and day(t.date) = day(:date1)order by t.id");
+        query.setParameter("id",id);
+        query.setParameter("myTimeEnd", time);
+        query.setParameter("timeStart", time);
+        query.setParameter("date1", date1);
+        List<Timeteable> list = query.list();
+        session.getTransaction().commit();
+        return ifExistsTimeteable(list);
+    }
+
+    @Override
     public Timeteable ifExistsTimeteable(Timeteable timeteable) {
         return null;
     }
@@ -75,6 +93,14 @@ public class TimeteableDAOImpl implements TimeteableDAO{
     private Timeteable ifExists(List<Timeteable> timeteables){
         if(timeteables.size() > 0){
             return timeteables.get(0);
+        }else {
+            return null;
+        }
+    }
+
+    private Timeteable ifExistsTimeteable(List<Timeteable> timeteables){
+        if(timeteables.size() > 0){
+            return timeteables.get(timeteables.size()-1);
         }else {
             return null;
         }

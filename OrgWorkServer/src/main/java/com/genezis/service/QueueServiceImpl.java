@@ -51,4 +51,9 @@ public class QueueServiceImpl implements QueueService {
     public List<Work> listWorksToStudentById(int id, int profid) {
         return queueDAO.listOfWorksToStudent(id, profid);
     }
+
+    @Override
+    public Queue getListToProfessorByIdWorkStudent(int id, int idWork, int idStudent) {
+        return queueDAO.getQueueByIdWorkProf(id,idWork,idStudent);
+    }
 }

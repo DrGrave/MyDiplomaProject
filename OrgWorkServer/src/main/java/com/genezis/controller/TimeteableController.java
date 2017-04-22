@@ -19,10 +19,10 @@ public class TimeteableController {
 
     @RequestMapping(value = "/timetable/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Timeteable> getUserType(@PathVariable("id") int id) {
-        System.out.println("Fetching User with id " + id);
-        Timeteable timeteable = timeteableService.getTimeteable(id);
+        System.out.println("Fetching timeteable User with id " + id);
+        Timeteable timeteable = timeteableService.getTimeteableByProfessor(id);
         if (timeteable == null) {
-            System.out.println("User with id " + id + " not found");
+            System.out.println("timeteable User with id " + id + " not found");
             return new ResponseEntity<Timeteable>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<Timeteable>(timeteable, HttpStatus.OK);

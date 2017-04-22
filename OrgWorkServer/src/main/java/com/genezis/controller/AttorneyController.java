@@ -1,6 +1,5 @@
 package com.genezis.controller;
 
-import com.genezis.dao.AttorneyDAO;
 import com.genezis.model.Attorney;
 import com.genezis.service.AttorneyService;
 import org.springframework.beans.factory.annotation.Autowired;

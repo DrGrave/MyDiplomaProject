@@ -47,6 +47,12 @@ public class QueueDAOImplTest {
         queue.setMyUser(userDAO.getUserById(3));
         queueDAO.editQueue(queue);
     }
+
+    @Test
+    public void getQueueByProfWork(){
+        Queue queue = queueDAO.getQueueByIdWorkProf(1,1,1);
+        System.out.print(queue);
+    }
     @Test
     public void list()throws NoSuchAlgorithmException{
         List<Queue> queues = queueDAO.listQueue();

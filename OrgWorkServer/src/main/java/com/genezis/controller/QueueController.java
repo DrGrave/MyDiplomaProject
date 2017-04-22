@@ -37,8 +37,18 @@ public class QueueController {
         return new ResponseEntity<List<Queue>>(queues, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/queue/professor/{idProf}/work/{idWork}/student/{idStudent}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Queue> listAllUsers(@PathVariable("idProf") int id, @PathVariable("idWork") int idWork, @PathVariable("idStudent") int idStudent) {
+        System.out.print(id);
+        Queue queue = queueService.getListToProfessorByIdWorkStudent(id, idWork, idStudent);
+        if(queue == null){
+            return new ResponseEntity<Queue>(HttpStatus.NOT_FOUND);//You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<Queue>(queue, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/queue/listworks/student/{id}/professor/{idprof}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Work>> listWorls(@PathVariable("id") int id, @PathVariable("idprof") int idprof){
+    public ResponseEntity<List<Work>> listWorks(@PathVariable("id") int id, @PathVariable("idprof") int idprof){
         List<Work> workList = queueService.listWorksToStudentById(id, idprof);
         if(workList.isEmpty()){
             return new ResponseEntity<List<Work>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
@@ -53,5 +63,17 @@ public class QueueController {
             return new ResponseEntity<List<CommentToWork>>(HttpStatus.NOT_FOUND);//You many decide to return HttpStatus.NOT_FOUND
         }
         return new ResponseEntity<List<CommentToWork>>(commentToWorksList, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/queue/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Queue> deleteUser(@PathVariable("id") int id) {
+        System.out.println("Fetching & Deleting queue with id " + id);
+        Queue queue = queueService.getQueue(id);
+        if (queue == null) {
+            System.out.println("Unable to delete. User with id " + id + " not found");
+            return new ResponseEntity<Queue>(HttpStatus.NOT_FOUND);
+        }
+        queueService.deleteQueue(queue);
+        return new ResponseEntity<Queue>(HttpStatus.NO_CONTENT);
     }
 }

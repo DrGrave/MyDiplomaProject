@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.Time;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -37,9 +38,14 @@ public class TimeteableDAOImplTest {
     public void add()throws NoSuchAlgorithmException {
         Timeteable timeteable = new Timeteable();
         Date date = new Date();
-        date.setTime(23413);
-        Time time = new Time(12);
+        date.setTime(234141341);
+        Time time = new Time(24);
+        Long lon;
         timeteable.setDate(date);
+        Calendar cal = Calendar.getInstance();
+        date = cal.getTime();
+        lon = date.getTime();
+        time.setTime(lon);
         timeteable.setMyUser(userDAO.getUserById(1));
         timeteable.setSubject(subjectDAO.getSubject(1));
         timeteable.setTime(time);
@@ -48,6 +54,19 @@ public class TimeteableDAOImplTest {
         timeteableDAO.saveTimeteable(timeteable);
     }
 
+    @Test
+    public void getTimeProfessorTime(){
+        Time time = new Time(13,24,34);
+        Date date = new Date();
+        Timeteable timeteable = timeteableDAO.getTimeteableByProfessorIdTime(1, time, date);
+        System.out.print(timeteable.getTime());
+    }
+
+    @Test
+    public void getTimeteable(){
+        Timeteable timeteable = timeteableDAO.getTimeteable(10);
+        System.out.print(timeteable.getTime());
+    }
     @Test
     public void edit()throws NoSuchAlgorithmException{
         Timeteable timeteable = timeteableDAO.getTimeteable(1);

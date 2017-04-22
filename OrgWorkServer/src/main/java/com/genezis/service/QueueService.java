@@ -16,4 +16,5 @@ public interface QueueService {
     Queue ifExists(Queue queue);
     List<Queue> getListToProfessorById(int id);
     List<Work> listWorksToStudentById(int id, int profid);
+    Queue getListToProfessorByIdWorkStudent(int id, int idWork, int idStudent);
 }

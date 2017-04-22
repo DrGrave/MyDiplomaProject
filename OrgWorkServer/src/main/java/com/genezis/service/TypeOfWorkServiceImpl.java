@@ -6,6 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by vadim on 03.04.17.
  */
@@ -38,5 +40,10 @@ public class TypeOfWorkServiceImpl implements TypeOfWorkService {
     @Override
     public TypeOfWork ifExists(TypeOfWork typeOfWork) {
         return typeOfWorkDAO.ifExistsTypeOfWork(typeOfWork);
+    }
+
+    @Override
+    public List<TypeOfWork> getListTypeOfWork() {
+        return typeOfWorkDAO.listTypeOfWork();
     }
 }

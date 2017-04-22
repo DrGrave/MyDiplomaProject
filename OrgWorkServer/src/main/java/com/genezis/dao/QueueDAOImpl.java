@@ -24,6 +24,19 @@ public class QueueDAOImpl implements QueueDAO{
     }
 
     @Override
+    public Queue getQueueByIdWorkProf(int idProf, int idWork, int idStudent) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from Queue q where q.timeteable.MyUser.id=:idProf and q.work.id=:idWork and q.MyUser.id=:idStudent");
+        query.setParameter("idProf", idProf);
+        query.setParameter("idWork", idWork);
+        query.setParameter("idStudent", idStudent);
+        List<Queue> list = query.list();
+        session.getTransaction().commit();
+        return ifExists(list);
+    }
+
+    @Override
     public void saveQueue(Queue queue) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();

@@ -17,4 +17,5 @@ public interface QueueDAO {
     Queue ifExistsQueue(Queue queue);
     List<Queue> listQueueProfessorById(int id);
     List<Work> listOfWorksToStudent(int id, int prof);
+    Queue getQueueByIdWorkProf(int idProf, int idWork, int idStudent);
 }

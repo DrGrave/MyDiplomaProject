@@ -2,12 +2,12 @@ package com.genezis.controller;
 import com.genezis.model.Marks;
 import com.genezis.service.MarksService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 
 @RestController
@@ -24,5 +24,18 @@ public class MarksController {
             return new ResponseEntity<Marks>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<Marks>(marks, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/marks/", method = RequestMethod.POST)
+    public ResponseEntity<Void> createWork(@RequestBody Marks marks, UriComponentsBuilder ucBuilder) {
+        System.out.println("Creating Work " + marks.getMark());
+        if (marksService.ifExists(marks) != null) {
+            System.out.println("A work with name " + marks.getMark() + " already exist");
+            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+        }
+        marksService.saveMarks(marks);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/marks/{id}").buildAndExpand(marks.getIdMarks()).toUri());
+        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 }

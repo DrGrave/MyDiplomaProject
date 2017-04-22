@@ -35,7 +35,7 @@ public class UserTypeController {
     }
 
     @RequestMapping(value = "/userType/create", method = RequestMethod.POST)
-    public ResponseEntity<Void> createUser(@RequestBody UserType userType,    UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<Void> createUserType(@RequestBody UserType userType,    UriComponentsBuilder ucBuilder) {
         System.out.println("Creating UserType " + userType.getNameUserType());
         if (userTypeService.ifExists(userType)) {
             System.out.println("A UserType with name " + userType.getNameUserType() + " already exist");
