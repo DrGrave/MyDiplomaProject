@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Time;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by vadim on 03.04.17.
@@ -42,6 +43,7 @@ public class TimeteableServiceImpl implements TimeteableService {
     public Timeteable ifExists(Timeteable timeteable) {
         return timeteableDAO.ifExistsTimeteable(timeteable);
     }
+
 
     @Override
     public Timeteable getTimeteableByProfessor(int id) {

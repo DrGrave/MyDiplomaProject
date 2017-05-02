@@ -22,7 +22,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="Hibernate.cdg.xml" />
+          <unit-entry name="Hibernate.cdg.xml" value="abbbec62-2658-4792-bc52-18e2679925d1" />
           <unit-entry name="hibernate4AnnotatedSessionFactory" value="abbbec62-2658-4792-bc52-18e2679925d1" />
         </datasource-map>
         <naming-strategy-map>

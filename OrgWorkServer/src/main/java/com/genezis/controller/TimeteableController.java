@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 @RestController
 public class TimeteableController {
@@ -18,7 +20,7 @@ public class TimeteableController {
     private TimeteableService timeteableService;
 
     @RequestMapping(value = "/timetable/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Timeteable> getUserType(@PathVariable("id") int id) {
+    public ResponseEntity<Timeteable> getNowTimeteable(@PathVariable("id") int id) {
         System.out.println("Fetching timeteable User with id " + id);
         Timeteable timeteable = timeteableService.getTimeteableByProfessor(id);
         if (timeteable == null) {
@@ -27,4 +29,5 @@ public class TimeteableController {
         }
         return new ResponseEntity<Timeteable>(timeteable, HttpStatus.OK);
     }
+
 }

@@ -17,4 +17,5 @@ public interface TimeteableDAO {
     void deleteTimeteable(Timeteable timeteable);
     Timeteable ifExistsTimeteable(Timeteable timeteable);
     Timeteable getTimeteableByProfessorIdTime(int id, Time time, Date date);
+
 }
