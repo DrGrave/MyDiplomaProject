@@ -1,8 +1,6 @@
 package com.genezis.service;
 
-import com.genezis.model.ListSubjectsToProfessor;
-import com.genezis.model.M2MGroupTimeteable;
-import com.genezis.model.Timeteable;
+import com.genezis.model.*;
 
 import java.util.List;
 
@@ -12,5 +10,6 @@ import java.util.List;
 public interface M2MGroupTimetableService {
     M2MGroupTimeteable getGroupTimetable(int id);
     List<Timeteable> getListTimeteablesToStudents(int id);
-    List<ListSubjectsToProfessor> getListSubjectToProfessor(int id);
+    List<MyUser> getListProfessors(int id);
+    List<Subject> getListSubjectToProfessor(int idGroup, int idProfessor);
 }

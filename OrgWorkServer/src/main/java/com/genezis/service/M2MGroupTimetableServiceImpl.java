@@ -40,35 +40,29 @@ public class M2MGroupTimetableServiceImpl implements M2MGroupTimetableService{
     }
 
     @Override
-    public List<ListSubjectsToProfessor> getListSubjectToProfessor(int idGroup) {
+    public List<MyUser> getListProfessors(int idGroup) {
         Calendar cal = Calendar.getInstance();
         Date date = cal.getTime();
         Time time = new Time(24);
         time.setTime(date.getTime());
         List<MyUser> list = new ArrayList<>();
         for (M2MGroupTimeteable m2MGroupTimeteable : m2MGroupTimeteableDAO.getTimetablesToStudent(idGroup, time, date)){
-            list.add(m2MGroupTimeteable.getIdTimeteable().getMyUser());
-        }
-        List<MyUser> myUserList = new ArrayList<>();
-        for (MyUser myUser : list) {
-            if (!ifExistsInList(myUserList, myUser)) {
-                myUserList.add(myUser);
+            if (!ifExistsInList(list, m2MGroupTimeteable.getIdTimeteable().getMyUser())) {
+                list.add(m2MGroupTimeteable.getIdTimeteable().getMyUser());
             }
         }
-        ListSubjectsToProfessor listSubjectsToProfessor = new ListSubjectsToProfessor();
-        List<ListSubjectsToProfessor> listSubjectsToProfessors = new ArrayList<>();
+        return list;
+    }
+
+    @Override
+    public List<Subject> getListSubjectToProfessor(int idGroup, int idProfessor) {
         List<Subject> subjects = new ArrayList<>();
-        for (MyUser professor : myUserList){
-            listSubjectsToProfessor.setMyUser(professor);
-            for (M2MGroupTimeteable m2MGroupTimeteable : m2MGroupTimeteableDAO.getTimetablesToStudentInQueue(idGroup, professor.getIdUser())){
+            for (M2MGroupTimeteable m2MGroupTimeteable : m2MGroupTimeteableDAO.getTimetablesToStudentInQueue(idGroup, idProfessor)){
                 if (!ifExistsSubjectInList(subjects, m2MGroupTimeteable.getIdTimeteable().getSubject())) {
                     subjects.add(m2MGroupTimeteable.getIdTimeteable().getSubject());
                 }
             }
-            listSubjectsToProfessor.setSubjects(subjects);
-        listSubjectsToProfessors.add(listSubjectsToProfessor);
-        }
-        return listSubjectsToProfessors;
+        return subjects;
     }
 
     private boolean ifExistsInList(List<MyUser> myUsers, MyUser myUser){

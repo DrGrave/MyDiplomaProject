@@ -1,9 +1,7 @@
 package com.genezis.controller;
 
 import com.genezis.dao.M2MGroupTimeteableDAO;
-import com.genezis.model.ListSubjectsToProfessor;
-import com.genezis.model.M2MGroupTimeteable;
-import com.genezis.model.Timeteable;
+import com.genezis.model.*;
 import com.genezis.service.M2MGroupTimetableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,11 +40,20 @@ public class M2MGroupTimeteableController {
     }
 
     @RequestMapping(value = "/timetable/toQueue/{idGroup}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<ListSubjectsToProfessor>> getListTimeteableToProfessor(@PathVariable("idGroup") int id){
-        List<ListSubjectsToProfessor> listSubjectsToProfessors = groupTimetable.getListSubjectToProfessor(id);
-        if (listSubjectsToProfessors == null){
-            return new ResponseEntity<List<ListSubjectsToProfessor>>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<List<MyUser>> getListTimeteableToProfessor(@PathVariable("idGroup") int id){
+        List<MyUser> myUserList = groupTimetable.getListProfessors(id);
+        if (myUserList == null){
+            return new ResponseEntity<List<MyUser>>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<List<ListSubjectsToProfessor>>(listSubjectsToProfessors, HttpStatus.OK);
+        return new ResponseEntity<List<MyUser>>(myUserList, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/timeteable/toListSubjects/{idGrouph}/professor/{idProfessor}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Subject>> getListSubjectToProfessor(@PathVariable("idGrouph")int idGrouph, @PathVariable("idProfessor")int idProfessor){
+        List<Subject> subjects = groupTimetable.getListSubjectToProfessor(idGrouph,idProfessor);
+        if (subjects == null){
+            return new ResponseEntity<List<Subject>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Subject>>(subjects, HttpStatus.OK);
     }
 }
