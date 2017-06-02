@@ -30,6 +30,7 @@ public class M2MGroupTimeteableController {
         }
         return new ResponseEntity<M2MGroupTimeteable>(groupTimeteable, HttpStatus.OK);
     }
+
     @RequestMapping(value = "/timetable/group/{idGroup}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Timeteable>> getListTimeteableToStudnt(@PathVariable("idGroup") int id){
         List<Timeteable> timeteables = groupTimetable.getListTimeteablesToStudents(id);

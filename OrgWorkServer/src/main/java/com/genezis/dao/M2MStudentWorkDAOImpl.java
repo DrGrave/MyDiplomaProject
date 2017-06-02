@@ -1,10 +1,13 @@
 package com.genezis.dao;
 
 import com.genezis.model.M2MStudentWork;
+import com.genezis.model.Subject;
+import com.genezis.model.Work;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,6 +15,49 @@ import java.util.List;
  */
 public class M2MStudentWorkDAOImpl implements M2MStudentWorkDAO {
     private SessionFactory sessionFactory;
+
+    @Override
+    public M2MStudentWork getM2MStudentWorkInfo(int id, int idUser) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from M2MStudentWork sw where sw.idUser.id=:idUser and sw.idOfWork.id=:id");
+        query.setParameter("idUser", idUser);
+        query.setParameter("id", id);
+        List<M2MStudentWork> list = query.list();
+        session.getTransaction().commit();
+        return ifExists(list);
+    }
+
+    @Override
+    public List<Subject> getListSubjectsToWorksStudent(int idUser) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from M2MStudentWork sw where sw.idUser.id=:idUser");
+        query.setParameter("idUser", idUser);
+        List<M2MStudentWork> list = query.list();
+        session.getTransaction().commit();
+        List<Subject> subjectList = new ArrayList<>();
+        for (M2MStudentWork m2MStudentWork: list){
+            subjectList.add(m2MStudentWork.getIdOfWork().getSubject());
+        }
+        return subjectList;
+    }
+
+    @Override
+    public List<Work> getListOfWorksToStudent(int id, int idUser) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from M2MStudentWork  sw where sw.idOfWork.subject.id=:id and sw.idUser.id=:idUser");
+        query.setParameter("id", id);
+        query.setParameter("idUser", idUser);
+        List<M2MStudentWork> list = query.list();
+        session.getTransaction().commit();
+        List<Work> works = new ArrayList<>();
+        for (M2MStudentWork m2MStudentWork: list){
+            works.add(m2MStudentWork.getIdOfWork());
+        }
+        return works;
+    }
 
     @Override
     public void saveM2MStudentWork(M2MStudentWork m2mStudentWork) {

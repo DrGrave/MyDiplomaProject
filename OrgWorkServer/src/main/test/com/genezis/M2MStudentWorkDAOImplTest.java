@@ -3,12 +3,14 @@ package com.genezis;
 import com.genezis.dao.*;
 import com.genezis.model.M2MGroupTimeteable;
 import com.genezis.model.M2MStudentWork;
+import com.genezis.model.Subject;
 import com.genezis.model.TypeOfAcceptWork;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 /**
  * Created by Vadim on 09.04.2017.
@@ -58,6 +60,14 @@ public class M2MStudentWorkDAOImplTest {
     public void list()throws NoSuchAlgorithmException{
 
     }
+
+    @Test
+    public  void listSubjects(){
+
+        List<Subject> list = m2mStudentWorkDAO.getListSubjectsToWorksStudent(1);
+        System.out.print(list);
+    }
+
     @Test
     public void delete()throws NoSuchAlgorithmException{
 

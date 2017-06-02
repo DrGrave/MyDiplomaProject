@@ -1,6 +1,8 @@
 package com.genezis.dao;
 
 import com.genezis.model.M2MStudentWork;
+import com.genezis.model.Subject;
+import com.genezis.model.Work;
 
 import java.util.List;
 
@@ -13,4 +15,9 @@ public interface M2MStudentWorkDAO {
     M2MStudentWork getM2MStudentWork(int id);
     M2MStudentWork editM2MStudentWork(M2MStudentWork m2mStudentWork);
     void deleteM2MStudentWork(M2MStudentWork m2mStudentWork);
+    List<Subject> getListSubjectsToWorksStudent(int idUser);
+
+    List<Work> getListOfWorksToStudent(int id, int idUser);
+
+    M2MStudentWork getM2MStudentWorkInfo(int id, int idUser);
 }

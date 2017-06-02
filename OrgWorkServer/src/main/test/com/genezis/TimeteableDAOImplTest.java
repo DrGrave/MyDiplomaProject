@@ -56,10 +56,10 @@ public class TimeteableDAOImplTest {
 
     @Test
     public void getTimeProfessorTime(){
-        Time time = new Time(13,24,34);
-        Date date = new Date();
-        Timeteable timeteable = timeteableDAO.getTimeteableByProfessorIdTime(1, time, date);
-        System.out.print(timeteable.getTime());
+//        Time time = new Time(13,24,34);
+//        Date date = new Date();
+//        Timeteable timeteable = timeteableDAO.getTimeteableByProfessorIdTime(1, time, date);
+//        System.out.print(timeteable.getTime());
     }
 
     @Test
