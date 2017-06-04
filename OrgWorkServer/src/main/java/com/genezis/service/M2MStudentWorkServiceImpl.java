@@ -8,6 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,12 +21,20 @@ public class M2MStudentWorkServiceImpl implements M2MStudentWorkService {
     M2MStudentWorkDAO m2MStudentWorkDAO = context.getBean(M2MStudentWorkDAO.class);
 
     @Override
-    public List<Subject> getListSubjects(int idUser) {
-        return m2MStudentWorkDAO.getListSubjectsToWorksStudent(idUser);
+    public List<M2MStudentWork> getListSubjects(int idUser) {
+        List<M2MStudentWork> m2MStudentWorks = new ArrayList<>();
+        List<Subject> subjects = new ArrayList<>();
+        for (M2MStudentWork studentWork : m2MStudentWorkDAO.getListSubjectsToWorksStudent(idUser)) {
+            if (!subjects.contains(studentWork.getIdOfWork().getSubject())){
+                m2MStudentWorks.add(studentWork);
+                subjects.add(studentWork.getIdOfWork().getSubject());
+            }
+        }
+        return m2MStudentWorks;
     }
 
     @Override
-    public List<Work> getListWorks(int id, int idUser) {
+    public List<M2MStudentWork> getListWorks(int id, int idUser) {
         return m2MStudentWorkDAO.getListOfWorksToStudent(id, idUser);
     }
 

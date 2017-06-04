@@ -22,8 +22,8 @@ public class M2MStudentWork {
             @JoinColumn(name = "IdUser")
     private MyUser idUser;
 
-    @OneToOne
-        @JoinColumn(name = "IdTypeOfAccepted")
+    @ManyToOne
+            @JoinColumn(name = "IdTypeOfAccepted")
     private TypeOfAcceptWork idOfAccaptWork;
 
     public int getIdM2MStudentWork() {
@@ -56,5 +56,10 @@ public class M2MStudentWork {
 
     public void setIdUser(MyUser idUser) {
         this.idUser = idUser;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }

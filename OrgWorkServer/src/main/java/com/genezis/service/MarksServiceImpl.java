@@ -6,6 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by vadim on 03.04.17.
  */
@@ -32,6 +34,11 @@ public class MarksServiceImpl implements MarksService{
     @Override
     public void deleteMarks(Marks marks) {
         marksDAO.deleteMarks(marks);
+    }
+
+    @Override
+    public List<Marks> getListMarks(int idUser, int idSubject) {
+        return marksDAO.getListMarks(idUser, idSubject);
     }
 
     @Override

@@ -30,6 +30,17 @@ public class M2MGroupTimeteableDAOImpl implements M2MGroupTimeteableDAO{
     }
 
     @Override
+    public List<M2MGroupTimeteable> getSubjectsToListMarks(int idGroup) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from M2MGroupTimeteable gt where gt.idGroup.idGroup=:idGroupStudnt");
+        query.setParameter("idGroupStudnt", idGroup);
+        List<M2MGroupTimeteable> list = query.list();
+        session.getTransaction().commit();
+        return list;
+    }
+
+    @Override
     public List<M2MGroupTimeteable> getTimetablesToStudentInQueue(int idGroup, int idProfessor) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();

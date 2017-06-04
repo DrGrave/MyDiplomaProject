@@ -12,4 +12,6 @@ public interface M2MGroupTimetableService {
     List<Timeteable> getListTimeteablesToStudents(int id);
     List<MyUser> getListProfessors(int id);
     List<Subject> getListSubjectToProfessor(int idGroup, int idProfessor);
+
+    List<Subject> getListSubjectToStudent(int idGroup);
 }

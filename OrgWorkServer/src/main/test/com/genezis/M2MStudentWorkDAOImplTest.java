@@ -64,7 +64,7 @@ public class M2MStudentWorkDAOImplTest {
     @Test
     public  void listSubjects(){
 
-        List<Subject> list = m2mStudentWorkDAO.getListSubjectsToWorksStudent(1);
+        List<M2MStudentWork> list = m2mStudentWorkDAO.getListSubjectsToWorksStudent(1);
         System.out.print(list);
     }
 

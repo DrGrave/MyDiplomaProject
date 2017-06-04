@@ -24,25 +24,25 @@ public class M2MStudentWorkController {
     private M2MStudentWorkService m2MStudentWorkService;
 
     @RequestMapping(value = "/subject/toStudentWorks/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Subject>> getSubjectsToStudent(@PathVariable("id") int id) {
+    public ResponseEntity<List<M2MStudentWork>> getSubjectsToStudent(@PathVariable("id") int id) {
         System.out.println("Fetching User with id " + id);
-        List<Subject> subjectList = m2MStudentWorkService.getListSubjects(id);
+        List<M2MStudentWork> subjectList = m2MStudentWorkService.getListSubjects(id);
         if (subjectList == null) {
             System.out.println("User with id " + id + " not found");
-            return new ResponseEntity<List<Subject>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List<M2MStudentWork>>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<List<Subject>>(subjectList, HttpStatus.OK);
+        return new ResponseEntity<List<M2MStudentWork>>(subjectList, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/workslist/{idSubject}/user/{idUser}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Work>> getWorksToStudent(@PathVariable("idSubject") int id, @PathVariable("idUser") int idUser) {
+    public ResponseEntity<List<M2MStudentWork>> getWorksToStudent(@PathVariable("idSubject") int id, @PathVariable("idUser") int idUser) {
         System.out.println("Fetching User with id " + id);
-        List<Work> works = m2MStudentWorkService.getListWorks(id, idUser);
+        List<M2MStudentWork> works = m2MStudentWorkService.getListWorks(id, idUser);
         if (works == null) {
             System.out.println("User with id " + id + " not found");
-            return new ResponseEntity<List<Work>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List<M2MStudentWork>>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<List<Work>>(works, HttpStatus.OK);
+        return new ResponseEntity<List<M2MStudentWork>>(works, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/work/{idWork}/user/{idUser}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

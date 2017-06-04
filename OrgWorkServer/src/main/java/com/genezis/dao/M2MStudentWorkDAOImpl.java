@@ -29,22 +29,18 @@ public class M2MStudentWorkDAOImpl implements M2MStudentWorkDAO {
     }
 
     @Override
-    public List<Subject> getListSubjectsToWorksStudent(int idUser) {
+    public List<M2MStudentWork> getListSubjectsToWorksStudent(int idUser) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        Query query = session.createQuery("from M2MStudentWork sw where sw.idUser.id=:idUser");
+        Query query = session.createQuery("from M2MStudentWork sw where sw.idUser.id=:idUser order by sw.idOfAccaptWork");
         query.setParameter("idUser", idUser);
         List<M2MStudentWork> list = query.list();
         session.getTransaction().commit();
-        List<Subject> subjectList = new ArrayList<>();
-        for (M2MStudentWork m2MStudentWork: list){
-            subjectList.add(m2MStudentWork.getIdOfWork().getSubject());
-        }
-        return subjectList;
+        return list;
     }
 
     @Override
-    public List<Work> getListOfWorksToStudent(int id, int idUser) {
+    public List<M2MStudentWork> getListOfWorksToStudent(int id, int idUser) {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
         Query query = session.createQuery("from M2MStudentWork  sw where sw.idOfWork.subject.id=:id and sw.idUser.id=:idUser");
@@ -52,11 +48,7 @@ public class M2MStudentWorkDAOImpl implements M2MStudentWorkDAO {
         query.setParameter("idUser", idUser);
         List<M2MStudentWork> list = query.list();
         session.getTransaction().commit();
-        List<Work> works = new ArrayList<>();
-        for (M2MStudentWork m2MStudentWork: list){
-            works.add(m2MStudentWork.getIdOfWork());
-        }
-        return works;
+        return list;
     }
 
     @Override

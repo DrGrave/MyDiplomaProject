@@ -9,6 +9,8 @@ import javax.persistence.*;
 @Table(name="TypeOfAccaptWork")
 public class TypeOfAcceptWork {
 
+    public TypeOfAcceptWork() {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idOfAccaptWork;

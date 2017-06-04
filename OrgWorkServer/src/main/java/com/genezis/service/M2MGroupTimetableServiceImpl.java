@@ -65,6 +65,17 @@ public class M2MGroupTimetableServiceImpl implements M2MGroupTimetableService{
         return subjects;
     }
 
+    @Override
+    public List<Subject> getListSubjectToStudent(int idGroup) {
+        List<Subject> subjects = new ArrayList<>();
+        for (M2MGroupTimeteable m2MGroupTimeteable : m2MGroupTimeteableDAO.getSubjectsToListMarks(idGroup)){
+            if (!ifExistsSubjectInList(subjects, m2MGroupTimeteable.getIdTimeteable().getSubject())) {
+                subjects.add(m2MGroupTimeteable.getIdTimeteable().getSubject());
+            }
+        }
+        return subjects;
+    }
+
     private boolean ifExistsInList(List<MyUser> myUsers, MyUser myUser){
         for (int i = 0; i < myUsers.size(); i++){
             if (myUsers.get(i).getIdUser() == myUser.getIdUser()){

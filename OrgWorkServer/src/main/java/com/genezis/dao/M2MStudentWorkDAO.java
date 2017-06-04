@@ -15,9 +15,9 @@ public interface M2MStudentWorkDAO {
     M2MStudentWork getM2MStudentWork(int id);
     M2MStudentWork editM2MStudentWork(M2MStudentWork m2mStudentWork);
     void deleteM2MStudentWork(M2MStudentWork m2mStudentWork);
-    List<Subject> getListSubjectsToWorksStudent(int idUser);
+    List<M2MStudentWork> getListSubjectsToWorksStudent(int idUser);
 
-    List<Work> getListOfWorksToStudent(int id, int idUser);
+    List<M2MStudentWork> getListOfWorksToStudent(int id, int idUser);
 
     M2MStudentWork getM2MStudentWorkInfo(int id, int idUser);
 }

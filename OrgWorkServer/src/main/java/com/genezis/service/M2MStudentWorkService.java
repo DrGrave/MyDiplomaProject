@@ -10,9 +10,9 @@ import java.util.List;
  * Created by Vadim on 12.04.2017.
  */
 public interface M2MStudentWorkService {
-    List<Subject> getListSubjects(int idUser);
+    List<M2MStudentWork> getListSubjects(int idUser);
 
-    List<Work> getListWorks(int id, int idUser);
+    List<M2MStudentWork> getListWorks(int id, int idUser);
 
     M2MStudentWork getM2MStudentWork(int id, int idUser);
 }

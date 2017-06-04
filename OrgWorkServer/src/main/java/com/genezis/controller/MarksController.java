@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.List;
+
 
 @RestController
 public class MarksController {
@@ -16,7 +18,7 @@ public class MarksController {
     private MarksService marksService;
 
     @RequestMapping(value = "/marks/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Marks> getUserType(@PathVariable("id") int id) {
+    public ResponseEntity<Marks> getMarkById(@PathVariable("id") int id) {
         System.out.println("Fetching User with id " + id);
         Marks marks = marksService.getMarks(id);
         if (marks == null) {
@@ -38,4 +40,14 @@ public class MarksController {
         headers.setLocation(ucBuilder.path("/marks/{id}").buildAndExpand(marks.getIdMarks()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
+
+    @RequestMapping(value = "/subject/marks/list/{User}/subject/{idSubject}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Marks>> getListMarks(@PathVariable("User") int idUser, @PathVariable("idSubject") int idSubject) {
+        List<Marks> marks = marksService.getListMarks(idUser, idSubject);
+        if (marks == null) {
+            return new ResponseEntity<List<Marks>>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List<Marks>>(marks, HttpStatus.OK);
+    }
+
 }

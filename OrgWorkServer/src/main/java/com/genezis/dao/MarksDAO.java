@@ -14,4 +14,6 @@ public interface MarksDAO {
     Marks editMarks(Marks marks);
      void deleteMarks(Marks marks);
      Marks ifExistsMarks(Marks marks);
+
+    List<Marks> getListMarks(int idUser, int idSubject);
 }

@@ -30,6 +30,18 @@ public class MarksDAOImpl implements MarksDAO{
     }
 
     @Override
+    public List<Marks> getListMarks(int idUser, int idSubject) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from Marks m where m.MyUser.id=:idUser and m.work.subject.idSubject=:idSubject");
+        query.setParameter("idUser", idUser);
+        query.setParameter("idSubject", idSubject);
+        List<Marks> marksList = query.list();
+        session.getTransaction().commit();
+        return marksList;
+    }
+
+    @Override
     public List<Marks> listMarks() {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();

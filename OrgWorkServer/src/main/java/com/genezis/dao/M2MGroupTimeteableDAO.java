@@ -18,4 +18,5 @@ public interface M2MGroupTimeteableDAO {
     void deleteM2MGroupTimeteable(M2MGroupTimeteable m2mGroupTimeteable);
     List<M2MGroupTimeteable> getTimetablesToStudent(int id, Time time, Date date);
     List<M2MGroupTimeteable> getTimetablesToStudentInQueue(int idGroup, int idProfessor);
+    List<M2MGroupTimeteable> getSubjectsToListMarks (int idGroup);
 }
