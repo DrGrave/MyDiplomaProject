@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Initialize {
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getTimetableGroup() {
-        return new ResponseEntity(HttpStatus.OK);
+    public ResponseEntity<String> getTimetableGroup() {
+        return new ResponseEntity<String>("Server is started!",HttpStatus.OK);
     }
 }
